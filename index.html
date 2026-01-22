@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Access Code Admin Panel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .feedback {
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feedback.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        .feedback.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
+        .feedback.info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+            display: block;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 1024px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+            font-size: 1.5em;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        input[type="text"],
+        input[type="file"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="file"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .btn-primary {
+            background-color: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(108, 117, 125, 0.4);
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 0.85em;
+            min-width: auto;
+            flex: none;
+        }
+
+        .search-box {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-box input {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+        .search-box button {
+            flex: 0 0 auto;
+            min-width: 100px;
+        }
+
+        .codes-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .codes-list::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .codes-list::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 5px;
+        }
+
+        .codes-list::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 5px;
+        }
+
+        .codes-list::-webkit-scrollbar-thumb:hover {
+            background: #5568d3;
+        }
+
+        .code-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .code-item:hover {
+            border-color: #667eea;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+        }
+
+        .code-info {
+            flex: 1;
+        }
+
+        .code-value {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 5px;
+        }
+
+        .code-details {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .code-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        .status-assigned {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .status-unassigned {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .code-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .empty-message {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+            font-size: 1.1em;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        @media (max-width: 768px) {
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .toolbar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .toolbar button {
+            min-width: 140px;
+            flex: 0 1 auto;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 90%;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .modal-header h3 {
+            color: #333;
+            font-size: 1.5em;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .close-modal {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            float: right;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #000;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        thead {
+            background-color: #f8f9fa;
+        }
+
+        th {
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #333;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+            color: #666;
+        }
+
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .footer {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            text-align: center;
+            color: #666;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .code-input-hint {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .info-text {
+            background-color: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #1565c0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>📚 Student Access Code Admin Panel</h1>
+            <p>Manage and assign student access codes efficiently</p>
+        </header>
+
+        <!-- Feedback Message -->
+        <div id="feedback" class="feedback"></div>
+
+        <!-- Statistics Section -->
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number" id="totalCodes">0</div>
+                <div class="stat-label">Total Codes</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="assignedCodes">0</div>
+                <div class="stat-label">Assigned Codes</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="unassignedCodes">0</div>
+                <div class="stat-label">Available Codes</div>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="main-grid">
+            <!-- Left Column: Add Codes & List -->
+            <div>
+                <!-- Add Access Codes Section -->
+                <div class="section">
+                    <h2>➕ Add Access Codes</h2>
+
+                    <div class="form-group">
+                        <label for="codesInput">Access Codes (one per line or comma-separated)</label>
+                        <textarea id="codesInput" placeholder="Example:&#10;CODE001&#10;CODE002&#10;CODE003&#10;&#10;Or: CODE001, CODE002, CODE003"></textarea>
+                        <div class="code-input-hint">• Enter codes one per line or separated by commas<br>• Duplicate codes will be ignored automatically</div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn-primary" onclick="addAccessCodes()">Add Codes</button>
+                        <button class="btn-secondary" onclick="openImportModal()">Import CSV</button>
+                    </div>
+                </div>
+
+                <!-- Access Codes List Section -->
+                <div class="section" style="margin-top: 30px;">
+                    <h2>📋 Access Codes</h2>
+
+                    <div class="search-box">
+                        <input type="text" id="codesSearch" placeholder="Search by code...">
+                        <button class="btn-secondary btn-small" onclick="searchCodes()">Search</button>
+                        <button class="btn-secondary btn-small" onclick="clearCodesSearch()">Clear</button>
+                    </div>
+
+                    <div class="toolbar">
+                        <button class="btn-success" onclick="openExportModal()">📥 Export CSV</button>
+                        <button class="btn-danger" onclick="deleteAllCodes()">🗑️ Clear All</button>
+                    </div>
+
+                    <div id="codesList" class="codes-list">
+                        <div class="empty-message">No access codes yet. Add codes to get started.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Student Assignment -->
+            <div>
+                <!-- Student Assignment Form -->
+                <div class="section">
+                    <h2>👤 Assign Code to Student</h2>
+
+                    <div class="info-text">
+                        ℹ️ Select an unassigned code and enter the student's full name to create an assignment.
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentName">Student Full Name</label>
+                        <input type="text" id="studentName" placeholder="e.g., John Doe">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="codeSelect">Available Access Codes</label>
+                        <select id="codeSelect" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 5px; font-size: 1em; cursor: pointer;">
+                            <option value="">-- Select an unassigned code --</option>
+                        </select>
+                    </div>
+
+                    <button class="btn-primary" style="width: 100%;" onclick="assignCodeToStudent()">Assign Code</button>
+                </div>
+
+                <!-- Assigned Codes / Student View -->
+                <div class="section" style="margin-top: 30px;">
+                    <h2>✅ Assigned Codes</h2>
+
+                    <div class="search-box">
+                        <input type="text" id="studentSearch" placeholder="Search by student name...">
+                        <button class="btn-secondary btn-small" onclick="searchStudents()">Search</button>
+                        <button class="btn-secondary btn-small" onclick="clearStudentSearch()">Clear</button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table id="assignedTable">
+                            <thead>
+                                <tr>
+                                    <th>Student Name</th>
+                                    <th>Access Code</th>
+                                    <th>Assigned Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="assignedTableBody">
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="assignedEmpty" class="empty-message">No assigned codes yet.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>💾 All data is saved locally in your browser and persists across sessions.</p>
+        </div>
+    </div>
+
+    <!-- Import CSV Modal -->
+    <div id="importModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeImportModal()">&times;</span>
+            <div class="modal-header">
+                <h3>Import Codes from CSV</h3>
+            </div>
+            <div class="form-group">
+                <label for="csvFile">Select CSV File</label>
+                <input type="file" id="csvFile" accept=".csv">
+                <div class="code-input-hint">📄 CSV should have one code per line or a column header 'codes' or 'access_code'</div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeImportModal()">Cancel</button>
+                <button class="btn-primary" onclick="importCodesFromCSV()">Import</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export CSV Modal -->
+    <div id="exportModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeExportModal()">&times;</span>
+            <div class="modal-header">
+                <h3>Export Data</h3>
+            </div>
+            <div class="form-group">
+                <label style="margin-bottom: 15px;">Choose what to export:</label>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <label style="display: flex; align-items: center; margin-bottom: 0; font-weight: normal; cursor: pointer;">
+                        <input type="radio" name="exportType" value="all" checked> All Codes (assigned and unassigned)
+                    </label>
+                    <label style="display: flex; align-items: center; margin-bottom: 0; font-weight: normal; cursor: pointer;">
+                        <input type="radio" name="exportType" value="assigned"> Only Assigned Codes with Student Names
+                    </label>
+                    <label style="display: flex; align-items: center; margin-bottom: 0; font-weight: normal; cursor: pointer;">
+                        <input type="radio" name="exportType" value="unassigned"> Only Unassigned Codes
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeExportModal()">Cancel</button>
+                <button class="btn-success" onclick="exportToCSV()">Export CSV</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===========================
+        // DATA MANAGEMENT (localStorage)
+        // ===========================
+
+        /**
+         * Initialize data structure from localStorage or create empty if not exists
+         * Data structure:
+         * {
+         *   codes: [{ code: 'CODE001', assigned: false, studentName: '', dateAssigned: '' }],
+         *   settings: { theme: 'light' }
+         * }
+         */
+        function initializeData() {
+            let data = localStorage.getItem('adminPanelData');
+            if (!data) {
+                data = {
+                    codes: [],
+                    settings: {}
+                };
+                localStorage.setItem('adminPanelData', JSON.stringify(data));
+            } else {
+                data = JSON.parse(data);
+            }
+            return data;
+        }
+
+        /**
+         * Get all stored data
+         */
+        function getData() {
+            return JSON.parse(localStorage.getItem('adminPanelData'));
+        }
+
+        /**
+         * Save data to localStorage
+         */
+        function saveData(data) {
+            localStorage.setItem('adminPanelData', JSON.stringify(data));
+            updateUI();
+        }
+
+        /**
+         * Get all codes
+         */
+        function getAllCodes() {
+            return getData().codes || [];
+        }
+
+        /**
+         * Get assigned codes
+         */
+        function getAssignedCodes() {
+            return getAllCodes().filter(c => c.assigned);
+        }
+
+        /**
+         * Get unassigned codes
+         */
+        function getUnassignedCodes() {
+            return getAllCodes().filter(c => !c.assigned);
+        }
+
+        // ===========================
+        // CODE MANAGEMENT FUNCTIONS
+        // ===========================
+
+        /**
+         * Parse codes from textarea input (handles both newline and comma-separated)
+         */
+        function parseCodesFromInput(inputText) {
+            // Split by newline or comma
+            let codes = inputText
+                .split(/[\n,]/)
+                .map(code => code.trim().toUpperCase())
+                .filter(code => code.length > 0);
+
+            // Remove duplicates
+            codes = [...new Set(codes)];
+            return codes;
+        }
+
+        /**
+         * Add new access codes
+         */
+        function addAccessCodes() {
+            const input = document.getElementById('codesInput').value;
+
+            if (!input.trim()) {
+                showFeedback('Please enter at least one access code', 'error');
+                return;
+            }
+
+            const newCodes = parseCodesFromInput(input);
+            let data = getData();
+            let existingCodes = data.codes.map(c => c.code);
+            let addedCount = 0;
+            let skippedCount = 0;
+
+            newCodes.forEach(code => {
+                if (!existingCodes.includes(code)) {
+                    data.codes.push({
+                        code: code,
+                        assigned: false,
+                        studentName: '',
+                        dateAssigned: ''
+                    });
+                    addedCount++;
+                } else {
+                    skippedCount++;
+                }
+            });
+
+            if (addedCount > 0) {
+                saveData(data);
+                document.getElementById('codesInput').value = '';
+                let message = `Added ${addedCount} code(s)`;
+                if (skippedCount > 0) {
+                    message += ` (${skippedCount} duplicate(s) skipped)`;
+                }
+                showFeedback(message, 'success');
+            } else {
+                showFeedback('All codes already exist', 'error');
+            }
+        }
+
+        /**
+         * Delete a specific code
+         */
+        function deleteCode(code) {
+            if (!confirm(`Are you sure you want to delete code "${code}"?`)) {
+                return;
+            }
+
+            let data = getData();
+            data.codes = data.codes.filter(c => c.code !== code);
+            saveData(data);
+            showFeedback(`Code "${code}" deleted successfully`, 'success');
+        }
+
+        /**
+         * Unassign a code from a student
+         */
+        function unassignCode(code) {
+            if (!confirm(`Unassign code "${code}" from student?`)) {
+                return;
+            }
+
+            let data = getData();
+            const codeObj = data.codes.find(c => c.code === code);
+            if (codeObj) {
+                const studentName = codeObj.studentName;
+                codeObj.assigned = false;
+                codeObj.studentName = '';
+                codeObj.dateAssigned = '';
+                saveData(data);
+                showFeedback(`Code unassigned from "${studentName}"`, 'success');
+            }
+        }
+
+        /**
+         * Delete all codes
+         */
+        function deleteAllCodes() {
+            if (!confirm('Are you sure? This will delete ALL codes. This action cannot be undone.')) {
+                return;
+            }
+
+            let data = getData();
+            data.codes = [];
+            saveData(data);
+            showFeedback('All codes have been deleted', 'success');
+        }
+
+        // ===========================
+        // ASSIGNMENT FUNCTIONS
+        // ===========================
+
+        /**
+         * Assign a code to a student
+         */
+        function assignCodeToStudent() {
+            const studentName = document.getElementById('studentName').value.trim();
+            const selectedCode = document.getElementById('codeSelect').value;
+
+            // Validation
+            if (!studentName) {
+                showFeedback('Please enter student name', 'error');
+                return;
+            }
+
+            if (!selectedCode) {
+                showFeedback('Please select an access code', 'error');
+                return;
+            }
+
+            let data = getData();
+            const codeObj = data.codes.find(c => c.code === selectedCode);
+
+            if (!codeObj) {
+                showFeedback('Code not found', 'error');
+                return;
+            }
+
+            if (codeObj.assigned) {
+                showFeedback('This code is already assigned', 'error');
+                return;
+            }
+
+            // Assign the code
+            codeObj.assigned = true;
+            codeObj.studentName = studentName;
+            codeObj.dateAssigned = new Date().toLocaleDateString();
+
+            saveData(data);
+            document.getElementById('studentName').value = '';
+            showFeedback(`Code "${selectedCode}" assigned to "${studentName}"`, 'success');
+        }
+
+        // ===========================
+        // SEARCH & FILTER FUNCTIONS
+        // ===========================
+
+        /**
+         * Search codes
+         */
+        function searchCodes() {
+            const query = document.getElementById('codesSearch').value.trim().toUpperCase();
+            const codes = query ? getAllCodes().filter(c => c.code.includes(query)) : getAllCodes();
+            renderCodesList(codes);
+        }
+
+        /**
+         * Clear codes search
+         */
+        function clearCodesSearch() {
+            document.getElementById('codesSearch').value = '';
+            renderCodesList(getAllCodes());
+        }
+
+        /**
+         * Search students/assignments
+         */
+        function searchStudents() {
+            const query = document.getElementById('studentSearch').value.trim().toLowerCase();
+            const assignments = query
+                ? getAssignedCodes().filter(c => c.studentName.toLowerCase().includes(query))
+                : getAssignedCodes();
+            renderAssignedTable(assignments);
+        }
+
+        /**
+         * Clear student search
+         */
+        function clearStudentSearch() {
+            document.getElementById('studentSearch').value = '';
+            renderAssignedTable(getAssignedCodes());
+        }
+
+        // ===========================
+        // IMPORT/EXPORT FUNCTIONS
+        // ===========================
+
+        /**
+         * Open import modal
+         */
+        function openImportModal() {
+            document.getElementById('importModal').classList.add('active');
+        }
+
+        /**
+         * Close import modal
+         */
+        function closeImportModal() {
+            document.getElementById('importModal').classList.remove('active');
+            document.getElementById('csvFile').value = '';
+        }
+
+        /**
+         * Import codes from CSV file
+         */
+        function importCodesFromCSV() {
+            const fileInput = document.getElementById('csvFile');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                showFeedback('Please select a file', 'error');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const content = e.target.result;
+                    const lines = content.split('\n').map(line => line.trim()).filter(line => line);
+
+                    // Try to detect if first line is header
+                    let startIndex = 0;
+                    if (lines[0] && (lines[0].toLowerCase().includes('code') || lines[0].toLowerCase().includes('access'))) {
+                        startIndex = 1;
+                    }
+
+                    const codes = lines
+                        .slice(startIndex)
+                        .map(line => line.split(',')[0].trim().toUpperCase())
+                        .filter(code => code.length > 0);
+
+                    if (codes.length === 0) {
+                        showFeedback('No valid codes found in file', 'error');
+                        return;
+                    }
+
+                    let data = getData();
+                    let existingCodes = data.codes.map(c => c.code);
+                    let addedCount = 0;
+                    let skippedCount = 0;
+
+                    codes.forEach(code => {
+                        if (!existingCodes.includes(code)) {
+                            data.codes.push({
+                                code: code,
+                                assigned: false,
+                                studentName: '',
+                                dateAssigned: ''
+                            });
+                            addedCount++;
+                        } else {
+                            skippedCount++;
+                        }
+                    });
+
+                    if (addedCount > 0) {
+                        saveData(data);
+                        closeImportModal();
+                        let message = `Imported ${addedCount} code(s)`;
+                        if (skippedCount > 0) {
+                            message += ` (${skippedCount} duplicate(s) skipped)`;
+                        }
+                        showFeedback(message, 'success');
+                    } else {
+                        showFeedback('All codes already exist', 'error');
+                    }
+                } catch (error) {
+                    showFeedback('Error reading file: ' + error.message, 'error');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        /**
+         * Open export modal
+         */
+        function openExportModal() {
+            document.getElementById('exportModal').classList.add('active');
+        }
+
+        /**
+         * Close export modal
+         */
+        function closeExportModal() {
+            document.getElementById('exportModal').classList.remove('active');
+        }
+
+        /**
+         * Export data to CSV
+         */
+        function exportToCSV() {
+            const exportType = document.querySelector('input[name="exportType"]:checked').value;
+            let data = [];
+            let filename = '';
+
+            if (exportType === 'all') {
+                data = getAllCodes().map(c => ({
+                    code: c.code,
+                    status: c.assigned ? 'Assigned' : 'Unassigned',
+                    studentName: c.studentName || '',
+                    dateAssigned: c.dateAssigned || ''
+                }));
+                filename = 'all_codes.csv';
+            } else if (exportType === 'assigned') {
+                data = getAssignedCodes().map(c => ({
+                    studentName: c.studentName,
+                    code: c.code,
+                    dateAssigned: c.dateAssigned
+                }));
+                filename = 'assigned_codes.csv';
+            } else if (exportType === 'unassigned') {
+                data = getUnassignedCodes().map(c => ({
+                    code: c.code
+                }));
+                filename = 'unassigned_codes.csv';
+            }
+
+            if (data.length === 0) {
+                showFeedback('No data to export', 'error');
+                return;
+            }
+
+            // Create CSV content
+            const headers = Object.keys(data[0]);
+            const csvContent = [
+                headers.join(','),
+                ...data.map(row => headers.map(h => `"${row[h]}"`).join(','))
+            ].join('\n');
+
+            // Download file
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+
+            closeExportModal();
+            showFeedback(`Exported ${data.length} record(s)`, 'success');
+        }
+
+        // ===========================
+        // UI RENDERING FUNCTIONS
+        // ===========================
+
+        /**
+         * Render the codes list
+         */
+        function renderCodesList(codes) {
+            const codesList = document.getElementById('codesList');
+
+            if (codes.length === 0) {
+                codesList.innerHTML = '<div class="empty-message">No codes to display.</div>';
+                return;
+            }
+
+            codesList.innerHTML = codes.map(c => `
+                <div class="code-item">
+                    <div class="code-info">
+                        <div class="code-value">${c.code}</div>
+                        <div class="code-details">
+                            <span class="code-status ${c.assigned ? 'status-assigned' : 'status-unassigned'}">
+                                ${c.assigned ? '✓ Assigned' : '○ Unassigned'}
+                            </span>
+                            ${c.assigned ? `
+                                <br>
+                                <strong>Student:</strong> ${c.studentName}<br>
+                                <strong>Date:</strong> ${c.dateAssigned}
+                            ` : ''}
+                        </div>
+                    </div>
+                    <div class="code-actions">
+                        ${c.assigned ? `
+                            <button class="btn-danger btn-small" onclick="unassignCode('${c.code}')">Unassign</button>
+                        ` : ''}
+                        <button class="btn-danger btn-small" onclick="deleteCode('${c.code}')">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        /**
+         * Render the assigned codes table
+         */
+        function renderAssignedTable(assignments) {
+            const tbody = document.getElementById('assignedTableBody');
+            const emptyMsg = document.getElementById('assignedEmpty');
+
+            if (assignments.length === 0) {
+                tbody.innerHTML = '';
+                emptyMsg.style.display = 'block';
+                return;
+            }
+
+            emptyMsg.style.display = 'none';
+            tbody.innerHTML = assignments.map(c => `
+                <tr>
+                    <td>${c.studentName}</td>
+                    <td><code style="background: #f0f0f0; padding: 4px 8px; border-radius: 4px; font-family: monospace;">${c.code}</code></td>
+                    <td>${c.dateAssigned}</td>
+                    <td>
+                        <button class="btn-danger btn-small" onclick="unassignCode('${c.code}')">Unassign</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        /**
+         * Update the unassigned codes dropdown
+         */
+        function updateCodeSelect() {
+            const select = document.getElementById('codeSelect');
+            const unassigned = getUnassignedCodes();
+
+            select.innerHTML = '<option value="">-- Select an unassigned code --</option>';
+            unassigned.forEach(c => {
+                const option = document.createElement('option');
+                option.value = c.code;
+                option.textContent = c.code;
+                select.appendChild(option);
+            });
+        }
+
+        /**
+         * Update statistics
+         */
+        function updateStats() {
+            const total = getAllCodes().length;
+            const assigned = getAssignedCodes().length;
+            const unassigned = getUnassignedCodes().length;
+
+            document.getElementById('totalCodes').textContent = total;
+            document.getElementById('assignedCodes').textContent = assigned;
+            document.getElementById('unassignedCodes').textContent = unassigned;
+        }
+
+        /**
+         * Update entire UI
+         */
+        function updateUI() {
+            renderCodesList(getAllCodes());
+            renderAssignedTable(getAssignedCodes());
+            updateCodeSelect();
+            updateStats();
+        }
+
+        /**
+         * Show feedback message
+         */
+        function showFeedback(message, type) {
+            const feedback = document.getElementById('feedback');
+            feedback.textContent = message;
+            feedback.className = `feedback ${type}`;
+            feedback.style.display = 'block';
+
+            // Auto-hide after 4 seconds
+            setTimeout(() => {
+                feedback.style.display = 'none';
+            }, 4000);
+        }
+
+        // ===========================
+        // EVENT LISTENERS & INITIALIZATION
+        // ===========================
+
+        /**
+         * Close modal when clicking outside of it
+         */
+        window.onclick = function(event) {
+            const importModal = document.getElementById('importModal');
+            const exportModal = document.getElementById('exportModal');
+
+            if (event.target === importModal) {
+                closeImportModal();
+            }
+            if (event.target === exportModal) {
+                closeExportModal();
+            }
+        };
+
+        /**
+         * Allow Enter key to submit forms
+         */
+        document.getElementById('codesInput').addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'Enter') {
+                addAccessCodes();
+            }
+        });
+
+        document.getElementById('studentName').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                assignCodeToStudent();
+            }
+        });
+
+        document.getElementById('codesSearch').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                searchCodes();
+            }
+        });
+
+        document.getElementById('studentSearch').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                searchStudents();
+            }
+        });
+
+        // Initialize the application
+        initializeData();
+        updateUI();
+    </script>
+</body>
+</html>
