@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mywebsite-web/mywebsite-web.github.io.git"
+    "url": "git+https://github.com/devv930/Linguisticss.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mywebsite-web/mywebsite-web.github.io/issues"
+    "url": "https://github.com/devv930/Linguisticss/issues"
   },
-  "homepage": "https://github.com/mywebsite-web/mywebsite-web.github.io#readme",
+  "homepage": "https://github.com/devv930/Linguisticss#readme",
   "dependencies": {
     "@capacitor/android": "^8.0.0",
     "@capacitor/cli": "^8.0.0",
