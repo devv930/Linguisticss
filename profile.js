@@ -8,6 +8,11 @@ let currentMonth = new Date();
 document.addEventListener('DOMContentLoaded', function() {
     initializeProfile();
     loadNavigation();
+    
+    // Listen for progress updates from progressTracker
+    document.addEventListener('progressUpdated', () => {
+        refreshProfileStats();
+    });
 });
 
 function initializeProfile() {
@@ -21,19 +26,38 @@ function initializeProfile() {
     initializeAccessCountdown();
 }
 
+// Refresh all stats when progress updates
+function refreshProfileStats() {
+    loadProfileData();
+    updateStreakVisualization();
+    updateXPBar();
+    loadAchievements();
+    loadRecentActivity();
+}
+
+
 function loadProfileData() {
     const profile = userProfile.getUserProfile();
     const streakInfo = userProfile.getStreakInfo();
     const xpInfo = userProfile.getXPForNextLevel();
     const certs = userProfile.getCertificates();
     
+    // Get profile image from localStorage as fallback
+    let profileImage = profile.profileImage;
+    if (!profileImage) {
+        const userData = JSON.parse(localStorage.getItem('linguisticsUserData') || '{}');
+        if (userData.profile && userData.profile.profileImage) {
+            profileImage = userData.profile.profileImage;
+        }
+    }
+    
     // Update profile display
     document.getElementById('profileName').textContent = profile.name || 'Student';
     
     // Display uploaded image if exists, otherwise show emoji avatar
     const avatarEl = document.getElementById('profileAvatar');
-    if(profile.profileImage){
-        avatarEl.innerHTML = `<img src="${profile.profileImage}" style="width:100%; height:100%; object-fit:cover; border-radius:50%;" />`;
+    if(profileImage){
+        avatarEl.innerHTML = `<img src="${profileImage}" style="width:100%; height:100%; object-fit:cover; border-radius:50%;" />`;
         avatarEl.style.padding = '0';
     } else {
         avatarEl.textContent = profile.avatar || '👤';
@@ -117,16 +141,25 @@ function updateXPBar() {
 
 function setupEventListeners() {
     // Edit profile button
-    document.getElementById('editProfileBtn').addEventListener('click', openEditModal);
+    const editBtn = document.getElementById('editProfileBtn');
+    if (editBtn) editBtn.addEventListener('click', openEditModal);
     
     // Edit modal
-    document.getElementById('saveEditBtn').addEventListener('click', saveProfile);
-    document.getElementById('cancelEditBtn').addEventListener('click', closeEditModal);
-    document.getElementById('closeEditModal').addEventListener('click', closeEditModal);
+    const saveBtn = document.getElementById('saveEditBtn');
+    if (saveBtn) saveBtn.addEventListener('click', saveProfile);
+    
+    const cancelBtn = document.getElementById('cancelEditBtn');
+    if (cancelBtn) cancelBtn.addEventListener('click', closeEditModal);
+    
+    const closeBtn = document.getElementById('closeEditModal');
+    if (closeBtn) closeBtn.addEventListener('click', closeEditModal);
     
     // Avatar edit button
-    document.getElementById('avatarEditBtn').addEventListener('click', openAvatarModal);
-    document.getElementById('closeAvatarModal').addEventListener('click', closeAvatarModal);
+    const avatarEditBtn = document.getElementById('avatarEditBtn');
+    if (avatarEditBtn) avatarEditBtn.addEventListener('click', openAvatarModal);
+    
+    const closeAvatarBtn = document.getElementById('closeAvatarModal');
+    if (closeAvatarBtn) closeAvatarBtn.addEventListener('click', closeAvatarModal);
     
     // Avatar options
     document.querySelectorAll('.avatar-option').forEach(btn => {
@@ -134,15 +167,21 @@ function setupEventListeners() {
     });
     
     // Calendar navigation
-    document.getElementById('prevMonth').addEventListener('click', () => {
-        currentMonth.setMonth(currentMonth.getMonth() - 1);
-        renderCalendar();
-    });
+    const prevMonthBtn = document.getElementById('prevMonth');
+    if (prevMonthBtn) {
+        prevMonthBtn.addEventListener('click', () => {
+            currentMonth.setMonth(currentMonth.getMonth() - 1);
+            renderCalendar();
+        });
+    }
     
-    document.getElementById('nextMonth').addEventListener('click', () => {
-        currentMonth.setMonth(currentMonth.getMonth() + 1);
-        renderCalendar();
-    });
+    const nextMonthBtn = document.getElementById('nextMonth');
+    if (nextMonthBtn) {
+        nextMonthBtn.addEventListener('click', () => {
+            currentMonth.setMonth(currentMonth.getMonth() + 1);
+            renderCalendar();
+        });
+    }
     
     // Close modals on outside click
     document.querySelectorAll('.modal').forEach(modal => {
@@ -155,64 +194,123 @@ function setupEventListeners() {
 }
 
 function openEditModal() {
-    const profile = userProfile.getUserProfile();
-    
-    document.getElementById('editName').value = profile.name || '';
-    document.getElementById('editEmail').value = profile.email || '';
-    document.getElementById('editMatric').value = profile.matricNumber || '';
-    document.getElementById('editBio').value = profile.bio || '';
-    document.getElementById('editAvatar').value = profile.avatar || '';
-    
-    // Show existing image preview if exists
-    const imagePreview = document.getElementById('imagePreview');
-    if(profile.profileImage){
-        imagePreview.innerHTML = `<img src="${profile.profileImage}" style="width:100%; height:auto;" />`;
-    } else {
-        imagePreview.innerHTML = '';
-    }
-    
-    document.getElementById('editModal').classList.add('active');
-}
-
-function closeEditModal() {
-    document.getElementById('editModal').classList.remove('active');
-}
-
-function saveProfile() {
-    const updates = {
-        name: document.getElementById('editName').value || 'Student',
-        email: document.getElementById('editEmail').value,
-        matricNumber: document.getElementById('editMatric').value || '',
-        bio: document.getElementById('editBio').value,
-        avatar: document.getElementById('editAvatar').value || '👤'
-    };
-    
-    // Handle image upload if file is selected
-    const fileInput = document.getElementById('uploadProfileImage');
-    if(fileInput && fileInput.files && fileInput.files[0]){
-        const file = fileInput.files[0];
+    try {
+        const profile = userProfile.getUserProfile();
         
-        // Validate file size (max 5MB)
-        if(file.size > 5 * 1024 * 1024){
-            alert('Image size must be less than 5MB');
+        const editNameEl = document.getElementById('editName');
+        const editEmailEl = document.getElementById('editEmail');
+        const editMatricEl = document.getElementById('editMatric');
+        const editBioEl = document.getElementById('editBio');
+        const editAvatarEl = document.getElementById('editAvatar');
+        const editModalEl = document.getElementById('editModal');
+        
+        if (!editNameEl || !editEmailEl || !editMatricEl || !editBioEl || !editAvatarEl || !editModalEl) {
+            console.error('Modal elements not found in DOM');
             return;
         }
         
-        // Read file and convert to base64
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            updates.profileImage = e.target.result;
+        editNameEl.value = profile.name || '';
+        editEmailEl.value = profile.email || '';
+        editMatricEl.value = profile.matricNumber || '';
+        editBioEl.value = profile.bio || '';
+        editAvatarEl.value = profile.avatar || '';
+        
+        // Show existing image preview if exists
+        const imagePreview = document.getElementById('imagePreview');
+        if(profile.profileImage && imagePreview){
+            imagePreview.innerHTML = `<img src="${profile.profileImage}" style="width:100%; height:auto;" />`;
+        } else if(imagePreview){
+            imagePreview.innerHTML = '';
+        }
+        
+        editModalEl.classList.add('active');
+        console.log('Edit modal opened successfully');
+    } catch (error) {
+        console.error('Error opening edit modal:', error);
+    }
+}
+
+function closeEditModal() {
+    try {
+        const editModalEl = document.getElementById('editModal');
+        if (editModalEl) {
+            editModalEl.classList.remove('active');
+        }
+    } catch (error) {
+        console.error('Error closing edit modal:', error);
+    }
+}
+
+function saveProfile() {
+    try {
+        const updates = {
+            name: document.getElementById('editName').value || 'Student',
+            email: document.getElementById('editEmail').value,
+            matricNumber: document.getElementById('editMatric').value || '',
+            bio: document.getElementById('editBio').value,
+            avatar: document.getElementById('editAvatar').value || '👤'
+        };
+        
+        // Handle image upload if file is selected
+        const fileInput = document.getElementById('uploadProfileImage');
+        if(fileInput && fileInput.files && fileInput.files[0]){
+            const file = fileInput.files[0];
+            
+            // Validate file size (max 5MB)
+            if(file.size > 5 * 1024 * 1024){
+                alert('Image size must be less than 5MB');
+                return;
+            }
+            
+            // Read file and convert to base64
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    updates.profileImage = e.target.result;
+                    userProfile.updateUserProfile(updates);
+                    
+                    // Save to localStorage directly for persistence
+                    const userData = JSON.parse(localStorage.getItem('linguisticsUserData') || '{}');
+                    userData.profile = userData.profile || {};
+                    userData.profile.profileImage = e.target.result;
+                    localStorage.setItem('linguisticsUserData', JSON.stringify(userData));
+                    
+                    if(fileInput) fileInput.value = ''; // Clear file input
+                    closeEditModal();
+                    loadProfileData();
+                    refreshProfileStats();
+                    alert('Profile saved successfully with new image!');
+                    console.log('Profile saved with image');
+                } catch (saveError) {
+                    console.error('Error saving profile with image:', saveError);
+                    alert('Error saving profile. Please try again.');
+                }
+            };
+            reader.onerror = () => {
+                console.error('Error reading file');
+                alert('Error reading image file. Please try again.');
+            };
+            reader.readAsDataURL(file);
+        } else {
+            // No image upload, just save text data
             userProfile.updateUserProfile(updates);
-            fileInput.value = ''; // Clear file input
+            
+            // Save to localStorage directly
+            const userData = JSON.parse(localStorage.getItem('linguisticsUserData') || '{}');
+            userData.profile = userData.profile || {};
+            Object.assign(userData.profile, updates);
+            localStorage.setItem('linguisticsUserData', JSON.stringify(userData));
+            
+            if(fileInput) fileInput.value = ''; // Clear file input
             closeEditModal();
             loadProfileData();
-        };
-        reader.readAsDataURL(file);
-    } else {
-        userProfile.updateUserProfile(updates);
-        fileInput.value = ''; // Clear file input
-        closeEditModal();
-        loadProfileData();
+            refreshProfileStats();
+            alert('Profile saved successfully!');
+            console.log('Profile saved without image');
+        }
+    } catch (error) {
+        console.error('Error in saveProfile:', error);
+        alert('An error occurred while saving. Please try again.');
     }
 }
 
@@ -288,10 +386,11 @@ function renderCalendar() {
 }
 
 function loadAchievements() {
-    const earnedBadges = userProfile.getEarnedBadges();
+    // Get earned badges from progressTracker system
+    const earnedBadgesArray = JSON.parse(localStorage.getItem('earnedBadges') || '[]');
     const achievementsGrid = document.getElementById('achievementsGrid');
     
-    // Define all badges (matching dashboard.js)
+    // Define all badges (matching progressTracker.js)
     const BADGES = {
         firstStep: { name: 'First Step', icon: '👣', desc: 'Start your first course' },
         explorer: { name: 'Explorer', icon: '🗺️', desc: 'Start 5 different courses' },
@@ -309,7 +408,7 @@ function loadAchievements() {
     
     for (const badgeId in BADGES) {
         const badge = BADGES[badgeId];
-        const isEarned = earnedBadges.includes(badgeId);
+        const isEarned = earnedBadgesArray.includes(badgeId);
         
         const badgeElement = document.createElement('div');
         badgeElement.className = `achievement-badge ${!isEarned ? 'locked' : ''}`;
@@ -327,6 +426,9 @@ function loadRecentActivity() {
     const profile = userProfile.getUserProfile();
     const streakInfo = userProfile.getStreakInfo();
     const certs = userProfile.getCertificates();
+    const courseProgress = JSON.parse(localStorage.getItem('courseProgress') || '{}');
+    const completedCourses = JSON.parse(localStorage.getItem('completedCourses') || '[]');
+    const earnedBadges = JSON.parse(localStorage.getItem('earnedBadges') || '[]');
     const activityList = document.getElementById('activityList');
     
     const activities = [];
@@ -338,6 +440,41 @@ function loadRecentActivity() {
         time: new Date(profile.joinDate).toLocaleDateString()
     });
     
+    // Badges earned
+    if (earnedBadges.length > 0) {
+        const badgeNames = {
+            firstStep: '👣 First Step',
+            explorer: '🗺️ Explorer',
+            masterExplorer: '🌍 Master Explorer',
+            completionist: '✅ Completionist',
+            scholar: '🎓 Scholar',
+            masterScholar: '👨‍🎓 Master Scholar',
+            perfectScore: '💯 Perfect Score',
+            certified: '🏆 Certified',
+            multiCertified: '🎖️ Multi-Certified',
+            streakMaster: '🔥 Streak Master'
+        };
+        
+        earnedBadges.slice(-3).forEach(badgeId => {
+            activities.push({
+                icon: '🏅',
+                title: `Unlocked badge: ${badgeNames[badgeId] || badgeId}`,
+                time: 'Recently'
+            });
+        });
+    }
+    
+    // Courses completed
+    if (completedCourses.length > 0) {
+        completedCourses.slice(-2).forEach(course => {
+            activities.push({
+                icon: '✅',
+                title: `Completed course: ${course}`,
+                time: 'Recently'
+            });
+        });
+    }
+    
     // Most recent certificate
     if (certs.length > 0) {
         const lastCert = certs[certs.length - 1];
@@ -348,11 +485,11 @@ function loadRecentActivity() {
         });
     }
     
-    // Current streak milestone
+    // Study streak milestone
     if (streakInfo.current >= 7) {
         activities.push({
             icon: '🔥',
-            title: `Achieved ${streakInfo.current}-day study streak!`,
+            title: `${streakInfo.current}-day study streak active!`,
             time: 'Active'
         });
     }
