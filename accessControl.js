@@ -86,6 +86,18 @@ function checkAccessOnLoad(){
     window.location.href = 'lock.html';
     return;
   }
+  
+  // Validate device ID matches
+  const currentDeviceId = getOrCreateDeviceId();
+  if(store.deviceId && store.deviceId !== currentDeviceId){
+    console.error('🚨 DEVICE MISMATCH: Access stored for different device!');
+    console.error('Stored Device:', store.deviceId);
+    console.error('Current Device:', currentDeviceId);
+    clearAccessStorage();
+    window.location.href = 'lock.html?error=device_mismatch';
+    return;
+  }
+  
   // validate expiry
   const now = Date.now();
   if(!store.expiry || store.expiry < now){
@@ -109,7 +121,7 @@ function bindLockForm(){
   // If already unlocked for this browser, redirect
   const store = getAccessStorage();
   if(store && store.unlocked && store.expiry && store.expiry > Date.now()){
-    window.location.href = 'dashboard.html';
+    window.location.href = 'index.html';
     return;
   }
 
@@ -134,7 +146,8 @@ function handleUnlock(studentName, code, msgEl){
 
   // Check if code is already activated on another device
   if(isCodeUsedOnOtherDevice(code)){
-    showMessage(msgEl, 'This code is already activated on another device. Each code works on only one device.', 'error');
+    showMessage(msgEl, '❌ ACCESS DENIED\n\nThis code is already activated on another device.\n\nEach access code works on ONE device only.\n\nPlease contact support if you need a new code.', 'error');
+    console.error(`🚨 SECURITY ALERT: Code ${code} reuse attempt on different device`);
     return;
   }
 
@@ -168,8 +181,11 @@ function handleUnlock(studentName, code, msgEl){
   // Store code usage in a global list (in localStorage as fallback security measure)
   storeCodeActivation(code, deviceId, studentName, expiry);
   
-  showMessage(msgEl, 'Access granted — redirecting...', 'success');
-  setTimeout(()=> window.location.href='dashboard.html', 800);
+  // Log activation for security
+  console.log(`✓ Code activated on device: ${deviceId}`);
+  
+  showMessage(msgEl, '✅ Access granted — redirecting...', 'success');
+  setTimeout(()=> window.location.href='index.html', 800);
 }
 
 function showMessage(el, text, type){
@@ -187,39 +203,66 @@ function isValidFormat(code){
 function getOrCreateDeviceId(){
   let deviceId = localStorage.getItem('deviceId');
   if(!deviceId){
-    deviceId = crypto && crypto.randomUUID ? crypto.randomUUID() : ('dev-' + Math.random().toString(36).slice(2) + '-' + Date.now());
+    // Create a more unique device ID using browser fingerprint
+    const fingerprint = navigator.userAgent + navigator.language + window.screen.width + window.screen.height + new Date().getTimezoneOffset();
+    const hash = btoa(fingerprint).substring(0, 16);
+    deviceId = 'DEV-' + hash + '-' + Date.now();
     localStorage.setItem('deviceId', deviceId);
+    console.log('🆕 New device ID created:', deviceId);
+  } else {
+    console.log('📱 Existing device ID found:', deviceId);
   }
   return deviceId;
 }
 
-// Track code activation globally (simulated via localStorage)
+// Track code activation with device fingerprinting
 function storeCodeActivation(code, deviceId, studentName, expiry){
-  // Store code->device mapping so we can check if a code is used elsewhere
-  const codeRegistry = JSON.parse(localStorage.getItem('codeRegistry') || '{}');
-  codeRegistry[code] = {
-    deviceId: deviceId,
-    studentName: studentName,
-    expiry: expiry,
-    activatedAt: Date.now()
-  };
-  localStorage.setItem('codeRegistry', JSON.stringify(codeRegistry));
+  try {
+    // Store in localStorage for quick access
+    const codeRegistry = JSON.parse(localStorage.getItem('codeRegistry') || '{}');
+    codeRegistry[code] = {
+      deviceId: deviceId,
+      studentName: studentName,
+      expiry: expiry,
+      activatedAt: Date.now(),
+      browser: navigator.userAgent.substring(0, 100),
+      screenRes: window.screen.width + 'x' + window.screen.height
+    };
+    localStorage.setItem('codeRegistry', JSON.stringify(codeRegistry));
+    console.log('✓ Code activation stored:', code, 'Device:', deviceId);
+  } catch (e) {
+    console.error('Error storing code activation:', e);
+  }
 }
 
 // Check if code is used on another device
 function isCodeUsedOnOtherDevice(code){
-  const codeRegistry = JSON.parse(localStorage.getItem('codeRegistry') || '{}');
-  const currentDeviceId = getOrCreateDeviceId();
-  const codeRecord = codeRegistry[code];
-  
-  if(!codeRecord) return false;
-  
-  // If code's expiry hasn't passed and device ID is different
-  if(codeRecord.expiry > Date.now() && codeRecord.deviceId !== currentDeviceId){
-    return true;
+  try {
+    const codeRegistry = JSON.parse(localStorage.getItem('codeRegistry') || '{}');
+    const currentDeviceId = getOrCreateDeviceId();
+    const codeRecord = codeRegistry[code];
+    
+    console.log('🔍 Checking code:', code);
+    console.log('   Current Device ID:', currentDeviceId);
+    console.log('   Registry record:', codeRecord);
+    
+    if(!codeRecord) {
+      console.log('   Status: First time use on this device');
+      return false;
+    }
+    
+    // If code's expiry hasn't passed and device ID is different
+    if(codeRecord.expiry > Date.now() && codeRecord.deviceId !== currentDeviceId){
+      console.warn(`🔒 BLOCKED: Code ${code} already used on device ${codeRecord.deviceId}. Current: ${currentDeviceId}`);
+      return true;
+    }
+    
+    console.log('   Status: Code available for this device');
+    return false;
+  } catch (e) {
+    console.error('Error checking code usage:', e);
+    return false;
   }
-  
-  return false;
 }
 
 // Public helper: revoke access (clears storage and makes code available for other devices)
