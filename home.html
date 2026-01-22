@@ -21,6 +21,15 @@
     <nav class="main-nav" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">Linguistics Guide</a>
+            <a href="profile.html" class="profile-section-link" title="Go to Profile">
+                <div class="profile-section">
+                    <img id="profileIconImg" src="👤" alt="Profile" class="profile-icon-img">
+                    <div class="profile-text">
+                        <div class="profile-label">👤 User Profile</div>
+                        <div class="profile-journey" id="profileStatus">Your Learning Journey</div>
+                    </div>
+                </div>
+            </a>
             <ul class="nav-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="home.html" class="active">Study Guide</a></li>
@@ -112,12 +121,45 @@
     </div>
 
     <script src="accessControl.js"></script>
+    <script src="progressTracker.js"></script>
     <script src="data.js"></script>
     <script src="navigation.js"></script>
     <script src="userProfile.js"></script>
     <script src="script.js"></script>
     <script src="features.js"></script>
     <script src="pwa-support.js"></script>
+    <script>
+        // Load profile image and status from localStorage
+        function loadProfileIcon() {
+            const profileIconImg = document.getElementById('profileIconImg');
+            const profileStatus = document.getElementById('profileStatus');
+            const userDataStr = localStorage.getItem('linguisticsUserData');
+            const accessStr = localStorage.getItem('linguisticsAccess');
+            
+            if (userDataStr) {
+                try {
+                    const userData = JSON.parse(userDataStr);
+                    if (userData.profile && userData.profile.profileImage) {
+                        profileIconImg.src = userData.profile.profileImage;
+                    }
+                } catch (e) {
+                    console.log('Could not load profile image');
+                }
+            }
+            
+            if (accessStr) {
+                try {
+                    const access = JSON.parse(accessStr);
+                    if (access.unlocked && access.studentName) {
+                        profileStatus.textContent = `Signed in: ${access.studentName}`;
+                    }
+                } catch (e) {
+                    console.log('Could not load status');
+                }
+            }
+        }
+        loadProfileIcon();
+    </script>
 </body>
 </html>
 

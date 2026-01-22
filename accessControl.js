@@ -94,8 +94,7 @@ function checkAccessOnLoad(){
     window.location.href = 'lock.html';
     return;
   }
-  // valid — render small access banner on-page
-  try{ renderAccessBanner(store); }catch(e){ /* ignore banner errors */ }
+  // Banner is now shown in profile section - no need to render here
 }
 
 function bindLockForm(){
