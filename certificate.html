@@ -40,48 +40,27 @@
     <div class="content-wrapper">
         <div class="container">
             
-            <!-- 1. Input Section -->
-            <div id="input-section" class="input-section">
+            <!-- 1. Input Section (HIDDEN - No manual entry allowed) -->
+            <div id="input-section" style="display: none;" class="input-section">
                 <div class="input-card">
-                    <h2>Claim Your Certificate</h2>
-                    <p style="margin-bottom: 30px; color: #666;">Enter your details below to generate your official certificate of completion.</p>
-                    
-                    <div class="form-group">
-                        <label for="student-name">Full Name</label>
-                        <input type="text" id="student-name" placeholder="e.g. John Doe" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="matric-number">Matric Number (ID)</label>
-                        <input type="text" id="matric-number" placeholder="e.g. LIN/2023/001" required>
-                    </div>
-
-                    <button class="btn-generate" onclick="handleGenerate()">Generate Certificate</button>
-
-                    <div style="margin-top: 15px; text-align: center;">
-                        <button class="btn-secondary" onclick="showHistory()" style="width: 100%; justify-content: center;">
-                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            My Certificate History
-                        </button>
-                    </div>
-
-                    <div class="back-link">
-                        <a href="test.html">← Back to Test</a>
-                    </div>
+                    <h2>Certificate History</h2>
+                    <p style="color: #666; text-align: center;">Only certificates earned by scoring 70% or above on tests can be viewed here.</p>
                 </div>
             </div>
 
-            <!-- 1.5 Certificate History Section (Hidden by default) -->
-            <div id="history-section" style="display: none; width: 100%; max-width: 800px; margin: 0 auto;">
+            <!-- 1.5 Certificate History Section (Shown by default) -->
+            <div id="history-section" style="display: block; width: 100%; max-width: 900px; margin: 0 auto;">
                 <div class="input-card" style="text-align: left;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                        <h2>My Certificates</h2>
-                        <button class="btn-secondary" onclick="hideHistory()" style="padding: 5px 10px; font-size: 12px;">Close</button>
-                    </div>
+                    <h2 style="margin-bottom: 20px;">📜 My Certificates</h2>
+                    <p style="color: #666; margin-bottom: 20px;">Certificates earned from tests with 70% or above score:</p>
                     
                     <div id="history-list" style="display: flex; flex-direction: column; gap: 15px;">
                         <!-- History items will be populated here -->
-                        <p style="text-align: center; color: #666;">No certificates found.</p>
+                        <p style="text-align: center; color: #999; padding: 30px;">No certificates earned yet. Score 70% or above on a test to earn a certificate.</p>
+                    </div>
+                    
+                    <div style="margin-top: 20px; text-align: center;">
+                        <a href="test.html" class="btn-secondary" style="display: inline-block; padding: 10px 20px;">← Back to Test</a>
                     </div>
                 </div>
             </div>

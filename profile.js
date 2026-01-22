@@ -191,6 +191,19 @@ function setupEventListeners() {
             }
         });
     });
+    
+    // Revoke access button
+    const revokeBtn = document.getElementById('revokeAccessBtn');
+    if (revokeBtn) {
+        revokeBtn.addEventListener('click', () => {
+            if(confirm('Are you sure you want to revoke access to this device? You will need to use an access code to unlock again.')){
+                revokeAccess();
+            }
+        });
+    }
+    
+    // Display access countdown
+    displayAccessCountdown();
 }
 
 function openEditModal() {
@@ -635,4 +648,44 @@ function loadNavigation() {
     if (typeof initializeNavigation === 'function') {
         initializeNavigation();
     }
+}
+
+// Display access status and countdown
+function displayAccessCountdown() {
+    try {
+        const storage = JSON.parse(localStorage.getItem('linguisticsAccess') || '{}');
+        const accessInfo = document.getElementById('accessStatus');
+        
+        if (!accessInfo) return;
+        
+        if (!storage.unlocked || !storage.expiry) {
+            accessInfo.textContent = 'No active access';
+            return;
+        }
+        
+        const now = Date.now();
+        const timeLeft = storage.expiry - now;
+        
+        if (timeLeft <= 0) {
+            accessInfo.textContent = 'Access has expired';
+            return;
+        }
+        
+        const daysLeft = Math.floor(timeLeft / (24 * 60 * 60 * 1000));
+        const hoursLeft = Math.floor((timeLeft % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+        
+        accessInfo.textContent = `✓ Device unlocked • Access expires in ${daysLeft} days, ${hoursLeft} hours`;
+        
+        // Update countdown every minute
+        setInterval(() => {
+            displayAccessCountdown();
+        }, 60000);
+    } catch (error) {
+        console.error('Error displaying access countdown:', error);
+    }
+}
+
+// Initialize access countdown on page load
+function initializeAccessCountdown() {
+    displayAccessCountdown();
 }

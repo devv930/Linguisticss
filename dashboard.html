@@ -88,8 +88,11 @@
 
             <!-- Course Completion Progress -->
             <section class="dashboard-section">
-                <h2>Course Completion Progress</h2>
-                <div class="course-progress-container" id="courseProgressContainer">
+                <div class="stats-header" style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;" onclick="toggleCourseProgress()">
+                    <h2 style="margin: 0;">Course Completion Progress</h2>
+                    <span class="toggle-arrow" id="courseToggleArrow" style="font-size: 1.5rem; transition: transform 0.3s ease;">▼</span>
+                </div>
+                <div class="course-progress-container" id="courseProgressContainer" style="display: none; margin-top: 15px;">
                     <!-- Dynamically populated -->
                 </div>
             </section>
@@ -116,8 +119,11 @@
 
             <!-- Detailed Course Statistics -->
             <section class="dashboard-section">
-                <h2>Detailed Course Statistics</h2>
-                <div class="detailed-stats-container" id="detailedStatsContainer">
+                <div class="stats-header" style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;" onclick="toggleDetailedStats()">
+                    <h2 style="margin: 0;">Detailed Course Statistics</h2>
+                    <span class="toggle-arrow" id="statsToggleArrow" style="font-size: 1.5rem; transition: transform 0.3s ease;">▼</span>
+                </div>
+                <div class="detailed-stats-container" id="detailedStatsContainer" style="display: none; margin-top: 15px;">
                     <!-- Course-by-course stats will be added here -->
                 </div>
             </section>

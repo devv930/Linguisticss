@@ -132,25 +132,28 @@ function handleUnlock(studentName, code, msgEl){
     return;
   }
 
-  // load used codes mapping from storage root (per-browser)
-  const storage = getAccessStorage();
-  storage.usedCodes = storage.usedCodes || {};
+  // Check if code is already activated on another device
+  if(isCodeUsedOnOtherDevice(code)){
+    showMessage(msgEl, 'This code is already activated on another device. Each code works on only one device.', 'error');
+    return;
+  }
 
+  // Get or create current device ID
+  const deviceId = getOrCreateDeviceId();
+  
+  // Check global used codes from server-side tracking (simulated via browser warning)
   const now = Date.now();
-  const existing = storage.usedCodes[code];
-
-  if(existing){
-    // if existing and not expired and deviceId belongs to another device -> deny
-    if(existing.expiry && existing.expiry > now){
-      // code in use
-      showMessage(msgEl, 'This code is already activated on another device.', 'error');
-      return;
-    }
-    // otherwise it's expired or available; allow re-use
+  
+  // Load local storage
+  const storage = getAccessStorage();
+  
+  // Check if this code is already used on THIS device (active session)
+  if(storage.code === code && storage.unlocked && storage.expiry > now){
+    showMessage(msgEl, 'This code is already in use on this device.', 'error');
+    return;
   }
 
   // Activate code for this device
-  const deviceId = crypto && crypto.randomUUID ? crypto.randomUUID() : ('dev-' + Math.random().toString(36).slice(2));
   const expiry = now + 30 * 24 * 60 * 60 * 1000; // 30 days
 
   storage.unlocked = true;
@@ -158,9 +161,13 @@ function handleUnlock(studentName, code, msgEl){
   storage.code = code;
   storage.studentName = studentName;
   storage.expiry = expiry;
-  storage.usedCodes[code] = { deviceId, expiry, studentName };
+  storage.activatedAt = now;
 
   saveAccessStorage(storage);
+  
+  // Store code usage in a global list (in localStorage as fallback security measure)
+  storeCodeActivation(code, deviceId, studentName, expiry);
+  
   showMessage(msgEl, 'Access granted — redirecting...', 'success');
   setTimeout(()=> window.location.href='dashboard.html', 800);
 }
@@ -176,8 +183,61 @@ function isValidFormat(code){
   return re.test(code);
 }
 
-// Public helper: revoke access (clears storage)
-function revokeAccess(){ clearAccessStorage(); window.location.href='lock.html'; }
+// Get or create a unique device ID (browser-based)
+function getOrCreateDeviceId(){
+  let deviceId = localStorage.getItem('deviceId');
+  if(!deviceId){
+    deviceId = crypto && crypto.randomUUID ? crypto.randomUUID() : ('dev-' + Math.random().toString(36).slice(2) + '-' + Date.now());
+    localStorage.setItem('deviceId', deviceId);
+  }
+  return deviceId;
+}
+
+// Track code activation globally (simulated via localStorage)
+function storeCodeActivation(code, deviceId, studentName, expiry){
+  // Store code->device mapping so we can check if a code is used elsewhere
+  const codeRegistry = JSON.parse(localStorage.getItem('codeRegistry') || '{}');
+  codeRegistry[code] = {
+    deviceId: deviceId,
+    studentName: studentName,
+    expiry: expiry,
+    activatedAt: Date.now()
+  };
+  localStorage.setItem('codeRegistry', JSON.stringify(codeRegistry));
+}
+
+// Check if code is used on another device
+function isCodeUsedOnOtherDevice(code){
+  const codeRegistry = JSON.parse(localStorage.getItem('codeRegistry') || '{}');
+  const currentDeviceId = getOrCreateDeviceId();
+  const codeRecord = codeRegistry[code];
+  
+  if(!codeRecord) return false;
+  
+  // If code's expiry hasn't passed and device ID is different
+  if(codeRecord.expiry > Date.now() && codeRecord.deviceId !== currentDeviceId){
+    return true;
+  }
+  
+  return false;
+}
+
+// Public helper: revoke access (clears storage and makes code available for other devices)
+function revokeAccess(){
+  const storage = getAccessStorage();
+  const code = storage.code;
+  
+  // Remove from code registry so other devices can use it
+  const codeRegistry = JSON.parse(localStorage.getItem('codeRegistry') || '{}');
+  if(code && codeRegistry[code]){
+    delete codeRegistry[code];
+    localStorage.setItem('codeRegistry', JSON.stringify(codeRegistry));
+  }
+  
+  // Clear access storage
+  clearAccessStorage();
+  window.location.href='lock.html';
+}
 
 // Auto-check when loaded
 (function(){

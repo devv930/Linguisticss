@@ -450,3 +450,54 @@ function recordTestScore(course, score) {
         recordPerfectScore();
     }
 }
+// Toggle Detailed Course Statistics
+function toggleDetailedStats() {
+    const container = document.getElementById('detailedStatsContainer');
+    const arrow = document.getElementById('statsToggleArrow');
+    
+    if (container.style.display === 'none') {
+        container.style.display = 'block';
+        arrow.style.transform = 'rotate(180deg)';
+        localStorage.setItem('detailedStatsVisible', 'true');
+    } else {
+        container.style.display = 'none';
+        arrow.style.transform = 'rotate(0deg)';
+        localStorage.setItem('detailedStatsVisible', 'false');
+    }
+}
+
+// Toggle Course Completion Progress
+function toggleCourseProgress() {
+    const container = document.getElementById('courseProgressContainer');
+    const arrow = document.getElementById('courseToggleArrow');
+    
+    if (container.style.display === 'none') {
+        container.style.display = 'block';
+        arrow.style.transform = 'rotate(180deg)';
+        localStorage.setItem('courseProgressVisible', 'true');
+    } else {
+        container.style.display = 'none';
+        arrow.style.transform = 'rotate(0deg)';
+        localStorage.setItem('courseProgressVisible', 'false');
+    }
+}
+
+// Restore state on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const detailedStatsVisible = localStorage.getItem('detailedStatsVisible') === 'true';
+    const courseProgressVisible = localStorage.getItem('courseProgressVisible') === 'true';
+    
+    if (detailedStatsVisible) {
+        const container = document.getElementById('detailedStatsContainer');
+        const arrow = document.getElementById('statsToggleArrow');
+        if (container) container.style.display = 'block';
+        if (arrow) arrow.style.transform = 'rotate(180deg)';
+    }
+    
+    if (courseProgressVisible) {
+        const container = document.getElementById('courseProgressContainer');
+        const arrow = document.getElementById('courseToggleArrow');
+        if (container) container.style.display = 'block';
+        if (arrow) arrow.style.transform = 'rotate(180deg)';
+    }
+});
