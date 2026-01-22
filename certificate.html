@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Generation - Linguistics-P</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="certificate.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Pinyon+Script&family=Great+Vibes&display=swap" rel="stylesheet">
+    <!-- html2pdf.js for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Linguistics Guide</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="home.html">Study Guide</a></li>
+                <li><a href="resources.html">Study Resources</a></li>
+                <li><a href="flashcards.html">Flashcards</a></li>
+                <li><a href="toc.html">Table of Contents</a></li>
+                <li><a href="ai-tutor.html">AI Tutor</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+                <li><a href="test.html">Practice Test</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="content-wrapper">
+        <div class="container">
+            
+            <!-- 1. Input Section -->
+            <div id="input-section" class="input-section">
+                <div class="input-card">
+                    <h2>Claim Your Certificate</h2>
+                    <p style="margin-bottom: 30px; color: #666;">Enter your details below to generate your official certificate of completion.</p>
+                    
+                    <div class="form-group">
+                        <label for="student-name">Full Name</label>
+                        <input type="text" id="student-name" placeholder="e.g. John Doe" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="matric-number">Matric Number (ID)</label>
+                        <input type="text" id="matric-number" placeholder="e.g. LIN/2023/001" required>
+                    </div>
+
+                    <button class="btn-generate" onclick="handleGenerate()">Generate Certificate</button>
+
+                    <div style="margin-top: 15px; text-align: center;">
+                        <button class="btn-secondary" onclick="showHistory()" style="width: 100%; justify-content: center;">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            My Certificate History
+                        </button>
+                    </div>
+
+                    <div class="back-link">
+                        <a href="test.html">← Back to Test</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1.5 Certificate History Section (Hidden by default) -->
+            <div id="history-section" style="display: none; width: 100%; max-width: 800px; margin: 0 auto;">
+                <div class="input-card" style="text-align: left;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h2>My Certificates</h2>
+                        <button class="btn-secondary" onclick="hideHistory()" style="padding: 5px 10px; font-size: 12px;">Close</button>
+                    </div>
+                    
+                    <div id="history-list" style="display: flex; flex-direction: column; gap: 15px;">
+                        <!-- History items will be populated here -->
+                        <p style="text-align: center; color: #666;">No certificates found.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Certificate Display Section (Hidden by default) -->
+            <div id="certificate-section" style="display: none;">
+                
+                <div class="actions-bar">
+                    <a href="#" class="btn-action" onclick="downloadPDF()">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        Download PDF
+                    </a>
+                    <button id="btn-back-history" class="btn-action btn-secondary" onclick="showHistory()" style="display: none;">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        History
+                    </button>
+                    <a href="home.html" class="btn-action btn-secondary">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                        Back to Home
+                    </a>
+                </div>
+
+                <!-- Certificate Container - Modern Prestige Design -->
+                <div class="certificate-container" id="certificate-element">
+                    
+                    <div class="cert-frame">
+                        <div class="cert-frame-inner">
+
+                            <!-- Corner Ornaments (SVG) -->
+                            <!-- Top Left -->
+                            <div class="corner-decoration corner-tl">
+                                <svg width="100%" height="100%" viewBox="0 0 100 100" fill="var(--gold)">
+                                    <path d="M0,0 L40,0 C30,10 20,20 20,40 L20,90 C15,80 10,70 0,60 Z" fill="var(--navy)"/>
+                                    <path d="M10,10 L50,10 C45,15 40,20 40,30 C40,40 45,45 50,50 L20,50 C20,40 15,35 10,30 L10,0 Z" stroke="var(--gold)" stroke-width="1" fill="none"/>
+                                    <circle cx="15" cy="15" r="3" fill="var(--gold)" />
+                                </svg>
+                            </div>
+                            <!-- Top Right -->
+                            <div class="corner-decoration corner-tr">
+                                <svg width="100%" height="100%" viewBox="0 0 100 100" fill="var(--gold)">
+                                    <path d="M0,0 L40,0 C30,10 20,20 20,40 L20,90 C15,80 10,70 0,60 Z" fill="var(--navy)"/>
+                                    <path d="M10,10 L50,10 C45,15 40,20 40,30 C40,40 45,45 50,50 L20,50 C20,40 15,35 10,30 L10,0 Z" stroke="var(--gold)" stroke-width="1" fill="none"/>
+                                    <circle cx="15" cy="15" r="3" fill="var(--gold)" />
+                                </svg>
+                            </div>
+                            <!-- Bottom Right -->
+                            <div class="corner-decoration corner-br">
+                                <svg width="100%" height="100%" viewBox="0 0 100 100" fill="var(--gold)">
+                                    <path d="M0,0 L40,0 C30,10 20,20 20,40 L20,90 C15,80 10,70 0,60 Z" fill="var(--navy)"/>
+                                    <path d="M10,10 L50,10 C45,15 40,20 40,30 C40,40 45,45 50,50 L20,50 C20,40 15,35 10,30 L10,0 Z" stroke="var(--gold)" stroke-width="1" fill="none"/>
+                                    <circle cx="15" cy="15" r="3" fill="var(--gold)" />
+                                </svg>
+                            </div>
+                            <!-- Bottom Left -->
+                            <div class="corner-decoration corner-bl">
+                                <svg width="100%" height="100%" viewBox="0 0 100 100" fill="var(--gold)">
+                                    <path d="M0,0 L40,0 C30,10 20,20 20,40 L20,90 C15,80 10,70 0,60 Z" fill="var(--navy)"/>
+                                    <path d="M10,10 L50,10 C45,15 40,20 40,30 C40,40 45,45 50,50 L20,50 C20,40 15,35 10,30 L10,0 Z" stroke="var(--gold)" stroke-width="1" fill="none"/>
+                                    <circle cx="15" cy="15" r="3" fill="var(--gold)" />
+                                </svg>
+                            </div>
+
+                            <div class="cert-content">
+                                
+                                <!-- Header -->
+                                <div class="cert-header">
+                                    <div class="cert-logo">
+                                        <!-- Simple elegant icon logo -->
+                                        <svg width="50" height="50" viewBox="0 0 100 100">
+                                            <path d="M50 0 L93.3 25 V75 L50 100 L6.7 75 V25 Z" fill="var(--navy)"/>
+                                            <path d="M50 10 L85 30 V70 L50 90 L15 70 V30 Z" fill="none" stroke="var(--gold)" stroke-width="2"/>
+                                            <text x="50" y="65" font-family="serif" font-size="40" fill="white" text-anchor="middle" font-weight="bold">L</text>
+                                        </svg>
+                                    </div>
+                                    <h1 class="cert-title">Certificate</h1>
+                                    <div class="cert-subtitle">of Completion</div>
+                                </div>
+
+                                <!-- Body -->
+                                <div class="cert-body">
+                                    <p class="present-text">This is to certify that</p>
+                                    
+                                    <div class="student-name" id="cert-student-name">Student Name</div>
+                                    
+                                    <p class="completion-text">Has successfully completed the course</p>
+                                    
+                                    <h2 class="course-title" id="cert-course-name">Course Title Here</h2>
+                                    
+                                    <div class="cert-details-grid">
+                                        <div class="detail-item">
+                                            <span class="detail-label">Level:</span>
+                                            <span class="detail-value" id="cert-level">[Level]</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Date:</span>
+                                            <span class="detail-value" id="cert-date">[Date]</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Footer -->
+                                <div class="cert-footer">
+                                    <!-- Instructor Signature -->
+                                    <div class="signature-block">
+                                        <div class="sig-img">Lattef Fawas</div> <!-- Can replace with SVG signature later -->
+                                        <div class="sig-line"></div>
+                                        <div class="sig-title">Course Instructor</div>
+                                    </div>
+
+                                    <!-- Seal -->
+                                    <div class="cert-seal">
+                                        <svg width="100%" height="100%" viewBox="0 0 200 200">
+                                            <defs>
+                                                <linearGradient id="goldSealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                    <stop offset="0%" style="stop-color:#fbf5b7;stop-opacity:1" />
+                                                    <stop offset="50%" style="stop-color:#d4af37;stop-opacity:1" />
+                                                    <stop offset="100%" style="stop-color:#aa771c;stop-opacity:1" />
+                                                </linearGradient>
+                                                <filter id="sealShadow" x="-20%" y="-20%" width="140%" height="140%">
+                                                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                                                    <feOffset dx="2" dy="2" result="offsetblur" />
+                                                    <feComponentTransfer>
+                                                        <feFuncA type="linear" slope="0.3" />
+                                                    </feComponentTransfer>
+                                                    <feMerge>
+                                                        <feMergeNode />
+                                                        <feMergeNode in="SourceGraphic" />
+                                                    </feMerge>
+                                                </filter>
+                                            </defs>
+                                            
+                                            <!-- Jagged Edge -->
+                                            <path d="M100,10 L110,25 L125,20 L130,35 L145,35 L145,50 L160,55 L155,70 L170,80 L160,95 L170,110 L155,120 L160,135 L145,140 L145,155 L130,155 L125,170 L110,165 L100,180 L90,165 L75,170 L70,155 L55,155 L55,140 L40,135 L45,120 L30,110 L40,95 L30,80 L45,70 L40,55 L55,50 L55,35 L70,35 L75,20 L90,25 Z" 
+                                                  fill="url(#goldSealGrad)" filter="url(#sealShadow)" stroke="#aa771c" stroke-width="1"/>
+                                            
+                                            <!-- Inner Circle -->
+                                            <circle cx="100" cy="95" r="60" fill="none" stroke="#aa771c" stroke-width="2" />
+                                            <path id="curve" d="M 60,95 A 40,40 0 1,1 140,95" fill="none" />
+                                            
+                                            <text font-family="serif" font-size="14" fill="#5c4002" font-weight="bold">
+                                                <textPath href="#curve" startOffset="50%" text-anchor="middle">
+                                                    LINGUISTICS-P
+                                                </textPath>
+                                            </text>
+                                            
+                                            <!-- Center Star -->
+                                            <path d="M100,75 L105,90 L120,90 L108,100 L112,115 L100,105 L88,115 L92,100 L80,90 L95,90 Z" fill="#5c4002" />
+                                        </svg>
+                                    </div>
+
+                                    <!-- Co-Instructor Signature -->
+                                    <div class="signature-block">
+                                        <div class="sig-img">SalamDev</div>
+                                        <div class="sig-line"></div>
+                                        <div class="sig-title">Tech Developer</div>
+                                    </div>
+                                </div>
+
+                                <div class="cert-id-small" style="bottom: 5px; background: none; border: none; font-size: 10px; color: #666;">ID: <span id="cert-id">12345678</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="accessControl.js"></script>
+    <script src="data.js"></script>
+    <script src="navigation.js"></script>
+    <script src="userProfile.js"></script>
+    <script src="certificate.js"></script>
+</body>
+</html>

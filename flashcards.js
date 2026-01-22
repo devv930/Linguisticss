@@ -1,89 +1,7 @@
 // Flashcards Page JavaScript
 // Handles card flipping, navigation, and card management
 
-// Flashcard data - linguistics terms and definitions
-const flashcardData = [
-    {
-        term: "Phonology",
-        definition: "The branch of linguistics that studies how sounds function in a particular language, focusing on sound patterns, organization, and rules."
-    },
-    {
-        term: "Phonetics",
-        definition: "The scientific study of speech sounds - how they are produced (articulatory), transmitted (acoustic), and perceived (auditory)."
-    },
-    {
-        term: "Morphology",
-        definition: "The branch of linguistics that studies word formation and the structure of words, including roots, affixes, and morphemes."
-    },
-    {
-        term: "Syntax",
-        definition: "The branch of linguistics that studies sentence structure and how words combine to form grammatical sentences."
-    },
-    {
-        term: "Semantics",
-        definition: "The branch of linguistics that studies meaning in language, including word meanings and how meanings combine."
-    },
-    {
-        term: "Pragmatics",
-        definition: "The branch of linguistics that studies language use in context and how meaning is conveyed beyond the literal words."
-    },
-    {
-        term: "Morpheme",
-        definition: "The smallest meaningful unit of language that cannot be further divided into smaller meaningful parts."
-    },
-    {
-        term: "Phoneme",
-        definition: "The smallest sound unit in a language that can distinguish meaning. For example, /p/ and /b/ are different phonemes in English."
-    },
-    {
-        term: "Allophone",
-        definition: "Variants of the same phoneme that don't change meaning. For example, aspirated [pʰ] and unaspirated [p] are allophones of /p/."
-    },
-    {
-        term: "Minimal Pair",
-        definition: "Two words that differ in meaning and differ in only one sound segment in the same position (e.g., 'bat' and 'pat')."
-    },
-    {
-        term: "Arbitrariness",
-        definition: "A characteristic of language where the relationship between words and their meanings is conventional, not natural."
-    },
-    {
-        term: "Productivity",
-        definition: "The ability of language to create infinite new sentences using finite linguistic resources."
-    },
-    {
-        term: "Displacement",
-        definition: "The ability of language to refer to things not present in time or space (past, future, or distant things)."
-    },
-    {
-        term: "Competence",
-        definition: "A speaker's underlying knowledge of their language - the mental grammar that allows production and understanding."
-    },
-    {
-        term: "Performance",
-        definition: "The actual use of language in real situations - what speakers actually say, including errors and variations."
-    },
-    {
-        term: "Place of Articulation",
-        definition: "Where in the vocal tract a sound is produced (e.g., bilabial, alveolar, velar)."
-    },
-    {
-        term: "Manner of Articulation",
-        definition: "How the air stream is modified to produce a sound (e.g., stop, fricative, nasal)."
-    },
-    {
-        term: "Voicing",
-        definition: "Whether the vocal cords vibrate during sound production. Voiced sounds have vibration, voiceless sounds don't."
-    },
-    {
-        term: "Derivational Morphology",
-        definition: "The process of creating new words or changing word class by adding affixes (e.g., 'happy' → 'happiness')."
-    },
-    {
-        term: "Inflectional Morphology",
-        definition: "The process of modifying words grammatically without changing word class (e.g., 'cat' → 'cats' for plural)."
-    }
-];
+// Note: flashcardData is loaded from data.js
 
 // Current card index
 let currentCardIndex = 0;
@@ -91,42 +9,27 @@ let isFlipped = false;
 
 // Initialize flashcards
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu toggle
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navMenu = document.querySelector('.nav-menu');
-    
-    if (mobileMenuBtn && navMenu) {
-        mobileMenuBtn.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            const isExpanded = navMenu.classList.contains('active');
-            this.setAttribute('aria-expanded', isExpanded);
-        });
-        
-        const navLinks = document.querySelectorAll('.nav-menu a');
-        navLinks.forEach(function(link) {
-            link.addEventListener('click', function() {
-                navMenu.classList.remove('active');
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
-            });
-        });
+    // Check if flashcardData is available
+    if (typeof flashcardData === 'undefined' || !Array.isArray(flashcardData)) {
+        console.error('flashcardData not found. Make sure data.js is loaded correctly.');
+        const container = document.querySelector('.flashcard-wrapper');
+        if (container) {
+            container.innerHTML = '<div class="error-message">Error loading flashcards. Please try refreshing the page.</div>';
+        }
+        return;
     }
+
+    // Menu toggle is now handled by navigation.js
     
     // Initialize first card
     updateCard();
     generateCardList();
     updateCardCounter();
     
-    // Flashcard flip functionality
-    const flashcard = document.getElementById('flashcard');
+    // Add event listeners
+    const flashcard = document.querySelector('.flashcard');
     if (flashcard) {
         flashcard.addEventListener('click', flipCard);
-        // Also allow keyboard navigation
-        flashcard.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                flipCard();
-            }
-        });
     }
     
     // Navigation buttons

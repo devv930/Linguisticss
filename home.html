@@ -25,6 +25,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="home.html" class="active">Study Guide</a></li>
                 <li><a href="resources.html">Study Resources</a></li>
+                <li><a href="toc.html">Table of Contents</a></li>
                 <li><a href="flashcards.html">Flashcards</a></li>
                 <li><a href="ai-tutor.html">AI Tutor</a></li>
                 <li><a href="community.html">Community</a></li>
@@ -39,50 +40,56 @@
         </div>
     </nav>
 
-    <div class="container">
-        <header>
-            <div class="header-nav">
-                <div class="header-controls">
-                    <button id="darkModeToggle" class="dark-mode-btn" title="Toggle Dark Mode">🌙</button>
-                    <a href="test.html" class="test-button">Take Practice Test</a>
-                    <a href="ai-tutor.html" class="ai-tutor-button">Open AI Tutor</a>
+    <div class="content-wrapper">
+        <div class="container">
+            <header class="home-header">
+                <!-- Scrolling Headline -->
+                <div class="marquee-container">
+                    <div class="marquee-content">
+                        ✨ Join Our Community for updates on the website and more ✨
+                    </div>
                 </div>
-            </div>
-        
-            <!-- Scrolling Headline -->
-            <div class="marquee-container">
-                <div class="marquee-content">
-                     Join Our Community for updates on the website and more
-                </div>
-            </div>
 
-            <h1>Linguistics Exam Preparation</h1>
-            <p class="subtitle">Comprehensive Study Guide for All Courses</p>
-            <div class="search-container">
-                <input type="text" id="searchInput" class="search-input" placeholder="Search courses, topics, or keywords...">
-                <button id="clearSearch" class="clear-search-btn" style="display: none;">✕</button>
-            </div>
-            <div class="progress-bar-container">
-                <div class="progress-info">
-                    <span>Study Progress: <span id="progressText">0%</span></span>
-                    <button id="resetProgress" class="reset-progress-btn">Reset Progress</button>
+                <div class="header-content">
+                    <h1>Linguistics Exam Preparation</h1>
+                    <p class="subtitle">Comprehensive Study Guide for All Courses</p>
+                    <p style="font-size: 0.9rem; color: #3498db; margin-top: 8px; font-weight: 500;">💡 Score 70% or above on the practice test to earn a certificate!</p>
                 </div>
-                <div class="progress-bar">
-                    <div id="progressFill" class="progress-fill"></div>
+
+                <div class="header-controls-wrapper">
+                    <div class="header-controls">
+                        <button id="darkModeToggle" class="dark-mode-btn" title="Toggle Dark Mode">🌙</button>
+                        <a href="test.html" class="test-button">📝 Take Practice Test</a>
+                        <a href="ai-tutor.html" class="ai-tutor-button">🤖 Open AI Tutor</a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="search-and-progress">
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search courses, topics, or keywords...">
+                    <button id="clearSearch" class="clear-search-btn" style="display: none;">✕</button>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-info">
+                        <span>Study Progress: <span id="progressText">0%</span></span>
+                        <button id="resetProgress" class="reset-progress-btn">Reset Progress</button>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="progressFill" class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <!-- Dashboard Quick Access -->
+                <div style="margin-top: 20px; padding: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; color: white; text-align: center;">
+                    <p style="margin: 0 0 10px 0; font-weight: 600;">🎯 Track Your Progress & Earn Badges</p>
+                    <a href="dashboard.html" style="display: inline-block; padding: 8px 20px; background: rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 6px; font-weight: 600; border: 1px solid rgba(255,255,255,0.3); transition: all 0.3s;">
+                        Visit Your Dashboard
+                    </a>
                 </div>
             </div>
-        </header>
 
         <main>
-            <section class="toc-section" id="tocSection">
-                <button class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="tocContainer">
-                    Table of Contents <span class="chev">▼</span>
-                </button>
-                <div class="toc-panel" id="tocPanel" hidden>
-                    <div id="tocContainer"></div>
-                    <p class="toc-note">More courses will be added soon.</p>
-                </div>
-            </section>
             <div class="level-section">
                 <h2 class="level-title">100 Level Courses</h2>
                 <div class="courses-grid" id="coursesContainer100">
@@ -104,6 +111,10 @@
         </footer>
     </div>
 
+    <script src="accessControl.js"></script>
+    <script src="data.js"></script>
+    <script src="navigation.js"></script>
+    <script src="userProfile.js"></script>
     <script src="script.js"></script>
     <script src="features.js"></script>
     <script src="pwa-support.js"></script>

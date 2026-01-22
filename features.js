@@ -177,33 +177,10 @@ function initProgressTracking() {
     setInterval(updateProgress, 1000);
 }
 
-// ========== MOBILE MENU FUNCTIONALITY ==========
-function initMobileMenu() {
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navMenu = document.querySelector('.nav-menu');
-    
-    if (mobileMenuBtn && navMenu) {
-        mobileMenuBtn.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            const isExpanded = navMenu.classList.contains('active');
-            this.setAttribute('aria-expanded', isExpanded);
-        });
-        
-        // Close menu when clicking on a link
-        const navLinks = document.querySelectorAll('.nav-menu a');
-        navLinks.forEach(function(link) {
-            link.addEventListener('click', function() {
-                navMenu.classList.remove('active');
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
-            });
-        });
-    }
-}
-
 // ========== INITIALIZE ALL FEATURES ==========
 document.addEventListener('DOMContentLoaded', () => {
     initDarkMode();
-    initMobileMenu();
+    // initMobileMenu is now handled by navigation.js
     
     // Wait for courses to be loaded before initializing search and progress
     setTimeout(() => {

@@ -7,80 +7,30 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Georgia', 'Times New Roman', serif;
     background: #f5f5f0;
-    color: #2c3e50;
-    line-height: 1.6;
     min-height: 100vh;
+    color: #376197;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     display: flex;
     flex-direction: column;
+    padding: 0;
 }
 
-/* Navigation - Same as other pages */
-.main-nav {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-    padding: 1rem 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.nav-container {
+/* Global Content Wrapper */
+.content-wrapper {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    flex: 1;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav-logo {
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-decoration: none;
-    letter-spacing: 1px;
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-    align-items: center;
-}
-
-.nav-menu a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
-    padding: 0.5rem 0;
-}
-
-.nav-menu a:hover,
-.nav-menu a.active {
-    color: #3498db;
-    border-bottom: 2px solid #3498db;
-}
-
-.mobile-menu-btn {
-    display: none;
     flex-direction: column;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-    gap: 4px;
 }
 
-.mobile-menu-btn span {
-    width: 25px;
-    height: 3px;
-    background: white;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-}
+/* Navigation Styles are now inherited from styles.css */
 
 /* Main Content */
 .resources-container {
@@ -97,7 +47,7 @@ body {
 
 .resources-header h1 {
     font-size: 2.5rem;
-    color: #2c3e50;
+    color: #eceeef;
     margin-bottom: 1rem;
     font-weight: 700;
 }
@@ -392,5 +342,118 @@ body {
     .note-card {
         padding: 1.5rem;
     }
+}
+
+/* Dark Mode Styles for Resources Page */
+body.dark-mode {
+    background: #0d1117;
+    color: #e0e6ed;
+}
+
+body.dark-mode .resources-container {
+    background: #0d1117;
+}
+
+body.dark-mode .resources-header h1 {
+    color: #e0e6ed;
+}
+
+body.dark-mode .resources-subtitle {
+    color: #8b949e;
+}
+
+body.dark-mode .search-container input {
+    background-color: #0d1117;
+    color: #e0e6ed;
+    border-color: #30363d;
+}
+
+body.dark-mode .search-container input:focus {
+    border-color: #58a6ff;
+}
+
+body.dark-mode .resource-card {
+    background-color: #161b22;
+    border-color: #30363d;
+}
+
+body.dark-mode .resource-card:hover {
+    border-color: #58a6ff;
+}
+
+body.dark-mode .resource-title {
+    color: #e0e6ed;
+}
+
+body.dark-mode .resource-description {
+    color: #c9d1d9;
+}
+
+body.dark-mode .resource-uses li {
+    color: #c9d1d9;
+}
+
+body.dark-mode .resource-uses li::before {
+    color: #58a6ff;
+}
+
+body.dark-mode .resource-uses li:hover {
+    background-color: rgba(88, 166, 255, 0.1);
+}
+
+body.dark-mode .resource-links {
+    border-top-color: #30363d;
+}
+
+body.dark-mode .resource-link {
+    color: #58a6ff;
+}
+
+body.dark-mode .resource-link:hover {
+    color: #79c0ff;
+}
+
+body.dark-mode .category-filter {
+    background-color: #0d1117;
+    color: #e0e6ed;
+    border-color: #30363d;
+}
+
+body.dark-mode .category-filter:checked {
+    background-color: #0969da;
+}
+
+body.dark-mode .note-card {
+    background-color: #161b22;
+    border-color: #30363d;
+}
+
+body.dark-mode .note-card h3 {
+    color: #e0e6ed;
+}
+
+body.dark-mode .note-card p {
+    color: #c9d1d9;
+}
+
+body.dark-mode .modal-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+body.dark-mode .modal-content {
+    background-color: #161b22;
+    border-color: #30363d;
+}
+
+body.dark-mode .modal-content h2 {
+    color: #e0e6ed;
+}
+
+body.dark-mode .modal-content p {
+    color: #c9d1d9;
+}
+
+body.dark-mode .modal-close {
+    color: #e0e6ed;
 }
 

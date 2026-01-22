@@ -1,0 +1,17 @@
+/* Simple lock page styles */
+:root{--bg:#f6f8fa;--card:#ffffff;--accent:#e74c3c;--muted:#6b7280}
+body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;background:var(--bg);color:#1f2937}
+.lock-container{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.lock-card{width:100%;max-width:760px;background:var(--card);border-radius:12px;padding:28px;box-shadow:0 10px 30px rgba(2,6,23,0.08)}
+.lock-header{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.lock-logo{font-size:28px}
+.lock-title{font-size:1.4rem;font-weight:700}
+.lock-desc{color:var(--muted);margin:0}
+.lock-form{margin-top:18px;display:grid;gap:12px}
+.input{width:100%;padding:12px;border:1px solid #e5e7eb;border-radius:8px;font-size:1rem}
+.btn{display:inline-block;padding:10px 16px;background:var(--accent);color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600}
+.hint{color:var(--muted);font-size:0.95rem}
+.footer-note{margin-top:14px;color:var(--muted);font-size:0.9rem}
+.error{color:#7f1d1d;background:#fee2e2;padding:10px;border-radius:8px}
+.success{color:#064e3b;background:#d1fae5;padding:10px;border-radius:8px}
+@media (max-width:480px){.lock-card{padding:18px}}

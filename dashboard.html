@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Progress Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard.css">
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "ulbt2y6yr4");
+</script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Linguistics Guide</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="home.html">Study Guide</a></li>
+                <li><a href="resources.html">Study Resources</a></li>
+                <li><a href="toc.html">Table of Contents</a></li>
+                <li><a href="flashcards.html">Flashcards</a></li>
+                <li><a href="ai-tutor.html">AI Tutor</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+                <li><a href="test.html">Practice Test</a></li>
+                <li><a href="dashboard.html" class="active">Dashboard</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div>
+                    <h1>📊 Learning Progress Dashboard</h1>
+                    <p class="subtitle">Track Your Progress & Achievements</p>
+                </div>
+            </div>
+        </header>
+
+        <main class="dashboard-main">
+            <!-- Overall Stats Section -->
+            <section class="dashboard-section stats-section">
+                <h2>Your Learning Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📚</div>
+                        <div class="stat-content">
+                            <p class="stat-label">Courses Started</p>
+                            <p class="stat-value" id="coursesStarted">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-content">
+                            <p class="stat-label">Courses Completed</p>
+                            <p class="stat-value" id="coursesCompleted">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🏅</div>
+                        <div class="stat-content">
+                            <p class="stat-label">Badges Earned</p>
+                            <p class="stat-value" id="badgesEarned">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🔥</div>
+                        <div class="stat-content">
+                            <p class="stat-label">Study Streak</p>
+                            <p class="stat-value" id="studyStreak">0</p>
+                            <p class="stat-subtext">days</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Course Completion Progress -->
+            <section class="dashboard-section">
+                <h2>Course Completion Progress</h2>
+                <div class="course-progress-container" id="courseProgressContainer">
+                    <!-- Dynamically populated -->
+                </div>
+            </section>
+
+            <!-- Badges Section -->
+            <section class="dashboard-section badges-section">
+                <h2>🏅 Your Badges</h2>
+                <div class="badges-grid" id="badgesContainer">
+                    <!-- Badges will be dynamically added here -->
+                </div>
+                <p class="empty-state" id="noBadgesMessage" style="display: none; text-align: center; color: #7f8c8d; padding: 20px;">
+                    Complete courses and challenges to earn badges!
+                </p>
+            </section>
+
+            <!-- Weekly Challenges Section -->
+            <section class="dashboard-section challenges-section">
+                <h2>🚀 Weekly Challenges</h2>
+                <p class="challenges-reset-info">Challenges reset every Monday at 00:00 UTC</p>
+                <div class="challenges-grid" id="challengesContainer">
+                    <!-- Challenges will be dynamically added here -->
+                </div>
+            </section>
+
+            <!-- Detailed Course Statistics -->
+            <section class="dashboard-section">
+                <h2>Detailed Course Statistics</h2>
+                <div class="detailed-stats-container" id="detailedStatsContainer">
+                    <!-- Course-by-course stats will be added here -->
+                </div>
+            </section>
+
+        </main>
+
+        <footer>
+            <p>Developed by <strong>Fauz Dev</strong> and <b>SalamDev</b></p>
+            <a href="about.html" class="about-link-footer">About Us</a>
+        </footer>
+    </div>
+
+    <script src="accessControl.js"></script>
+    <script src="data.js"></script>
+    <script src="navigation.js"></script>
+    <script src="userProfile.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

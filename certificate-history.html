@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate History - Linguistics-P</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="certificate.css">
+    <style>
+        .history-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 20px;
+        }
+
+        .history-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .history-header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .history-header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cert-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .cert-card:hover {
+            border-color: #3498db;
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .cert-card h3 {
+            color: #2c3e50;
+            margin: 0 0 10px 0;
+            font-size: 1.3rem;
+        }
+
+        .cert-card p {
+            color: #666;
+            margin: 8px 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .cert-card .cert-info {
+            background: #f9f9f9;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-size: 0.9rem;
+        }
+
+        .cert-info-label {
+            color: #7f8c8d;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cert-info-value {
+            color: #2c3e50;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        .cert-card-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .cert-card-actions button {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-view {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-view:hover {
+            background: #2980b9;
+        }
+
+        .btn-download {
+            background: #27ae60;
+            color: white;
+        }
+
+        .btn-download:hover {
+            background: #229954;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: #f9f9f9;
+            border-radius: 12px;
+        }
+
+        .empty-state h2 {
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+
+        .empty-state p {
+            color: #bdc3c7;
+            margin-bottom: 20px;
+        }
+
+        .btn-create-cert {
+            background: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-create-cert:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+
+        /* Dark Mode */
+        body.dark-mode .cert-card {
+            background: #161b22;
+            border-color: #30363d;
+        }
+
+        body.dark-mode .cert-card:hover {
+            border-color: #58a6ff;
+            box-shadow: 0 6px 20px rgba(88, 166, 255, 0.2);
+        }
+
+        body.dark-mode .cert-card h3 {
+            color: #e0e6ed;
+        }
+
+        body.dark-mode .cert-card p {
+            color: #8b949e;
+        }
+
+        body.dark-mode .cert-info {
+            background: #0d1117;
+            border: 1px solid #30363d;
+        }
+
+        body.dark-mode .cert-info-label {
+            color: #6e7681;
+        }
+
+        body.dark-mode .cert-info-value {
+            color: #c9d1d9;
+        }
+
+        body.dark-mode .history-header h1 {
+            color: #e0e6ed;
+        }
+
+        body.dark-mode .history-header p {
+            color: #8b949e;
+        }
+
+        body.dark-mode .empty-state {
+            background: #0d1117;
+        }
+
+        body.dark-mode .empty-state h2 {
+            color: #8b949e;
+        }
+
+        body.dark-mode .empty-state p {
+            color: #6e7681;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .history-container {
+                padding: 1.5rem 15px;
+            }
+
+            .certificates-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .cert-card {
+                padding: 1rem;
+            }
+
+            .cert-card-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Linguistics Guide</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="home.html">Study Guide</a></li>
+                <li><a href="resources.html">Study Resources</a></li>
+                <li><a href="flashcards.html">Flashcards</a></li>
+                <li><a href="toc.html">Table of Contents</a></li>
+                <li><a href="ai-tutor.html">AI Tutor</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+                <li><a href="test.html">Practice Test</a></li>
+                <li><a href="certificate-history.html" class="active">Certificate History</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="content-wrapper">
+        <div class="container">
+            <div class="history-container">
+                <div class="history-header">
+                    <h1>📜 Certificate History</h1>
+                    <p>View all your collected certificates</p>
+                </div>
+
+                <div id="certificatesContainer">
+                    <!-- Certificates will be loaded here -->
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="certificate.html" class="btn-create-cert">+ Create New Certificate</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <p>Developed by <strong>Fauz Dev</strong> and <b>SalamDev</b></p>
+            <p>&copy; 2024 Linguistics Exam Preparation Guide. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="accessControl.js"></script>
+    <script src="data.js"></script>
+    <script src="navigation.js"></script>
+    <script src="features.js"></script>
+    <script>
+        // Load and display certificates
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.getElementById('certificatesContainer');
+            const history = JSON.parse(localStorage.getItem('userCertificates')) || [];
+
+            if (history.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <h2>No Certificates Yet</h2>
+                        <p>You haven't collected any certificates yet. Start by taking a test or creating your first certificate.</p>
+                        <a href="certificate.html" class="btn-create-cert">Create Certificate</a>
+                    </div>
+                `;
+                return;
+            }
+
+            // Sort by date descending (most recent first)
+            history.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            const grid = document.createElement('div');
+            grid.className = 'certificates-grid';
+
+            history.forEach(cert => {
+                const card = document.createElement('div');
+                card.className = 'cert-card';
+                
+                const dateObj = new Date(cert.date);
+                const formattedDate = dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+                card.innerHTML = `
+                    <h3>${cert.courseTitle || 'Linguistics Course'}</h3>
+                    <p><strong>${cert.studentName}</strong></p>
+                    
+                    <div class="cert-info">
+                        <div class="cert-info-label">Matric Number</div>
+                        <div class="cert-info-value">${cert.studentMatric || cert.id || 'N/A'}</div>
+                    </div>
+
+                    <div class="cert-info">
+                        <div class="cert-info-label">Date Collected</div>
+                        <div class="cert-info-value">${formattedDate}</div>
+                    </div>
+
+                    <div class="cert-info">
+                        <div class="cert-info-label">Level</div>
+                        <div class="cert-info-value">${cert.courseLevel || '100-200 Level'}</div>
+                    </div>
+
+                    <div class="cert-card-actions">
+                        <button class="btn-view" onclick="viewCertificate('${cert.id || ''}')">View Certificate</button>
+                        <button class="btn-download" onclick="downloadCertificate('${cert.id || ''}')">Download PDF</button>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+
+            container.appendChild(grid);
+        });
+
+        // View certificate
+        function viewCertificate(certId) {
+            if (certId) {
+                // Store the cert to view and redirect to certificate.html
+                const history = JSON.parse(localStorage.getItem('userCertificates')) || [];
+                const cert = history.find(c => c.id === certId);
+                
+                if (cert) {
+                    localStorage.setItem('certificateData', JSON.stringify(cert));
+                    window.location.href = 'certificate.html';
+                }
+            }
+        }
+
+        // Download certificate (will use html2pdf on certificate.html)
+        function downloadCertificate(certId) {
+            if (certId) {
+                const history = JSON.parse(localStorage.getItem('userCertificates')) || [];
+                const cert = history.find(c => c.id === certId);
+                
+                if (cert) {
+                    localStorage.setItem('certificateData', JSON.stringify(cert));
+                    // Redirect and trigger download via certificate.html
+                    window.location.href = 'certificate.html?download=true';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

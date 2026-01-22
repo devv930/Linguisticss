@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Linguistics Test - Exam Practice</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="test.css">
 <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -14,33 +15,37 @@
 </script>
 </head>
 <body>
+    <!-- Navigation Bar -->
+    <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Linguistics Guide</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="home.html">Study Guide</a></li>
+                <li><a href="resources.html">Study Resources</a></li>
+                <li><a href="toc.html">Table of Contents</a></li>
+                <li><a href="flashcards.html">Flashcards</a></li>
+                <li><a href="ai-tutor.html">AI Tutor</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+                <li><a href="test.html" class="active">Practice Test</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
     <div class="container">
-        <!-- Navigation Bar -->
-        <nav class="main-nav" role="navigation" aria-label="Main navigation">
-            <div class="nav-container">
-                <a href="index.html" class="nav-logo">Linguistics Guide</a>
-                <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="home.html">Study Guide</a></li>
-                    <li><a href="resources.html">Study Resources</a></li>
-                    <li><a href="flashcards.html">Flashcards</a></li>
-                    <li><a href="community.html">Community</a></li>
-                    <li><a href="faq.html">FAQs</a></li>
-                    <li><a href="test.html" class="active">Practice Test</a></li>
-                </ul>
-                <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </nav>
 
         <header>
             <div class="header-content">
                 <div>
                     <h1>Linguistics Practice Test</h1>
                     <p class="subtitle">Test Your Knowledge</p>
+                    <p style="font-size: 0.9rem; color: #3498db; margin-top: 8px; font-weight: 500;">💡 Score 70% or above to earn a certificate!</p>
                 </div>
             </div>
         </header>
@@ -63,6 +68,9 @@
                         <option value="LIN 205">LIN 205 - Comparative Historical Linguistics</option>
                         <option value="LIN 207">LIN 207 - Writing System and Orthographic Design</option>
                         <option value="LIN 209">LIN 209 - Linguistics and Broadcasting</option>
+                        <option value="YOR 201">YOR 201 - Introduction to Yoruba Phonetics</option>
+                        <option value="YOR 203">YOR 203 - Ìmọ̀ Jinlẹ̀ ní Àmì-òòrò, Kíkọ́ àti Kíkà Yorùbá</option>
+                        <option value="GST 201">GST 201 - Philosophy</option>
                     </optgroup>
                 </select>
                 <button id="startTestBtn" onclick="startTest()">Start Test</button>
@@ -98,12 +106,18 @@
                 <p class="score-text">You scored <span id="scoreNumber">0</span> out of <span id="totalScore">30</span></p>
             </div>
 
+            <div id="certificateEligibilityMessage" style="text-align: center; padding: 20px; background: #e8f4f8; border-radius: 8px; border-left: 4px solid #3498db; margin-bottom: 20px; display: none;">
+                <p style="margin: 0; color: #2c3e50; font-weight: 600; font-size: 1.1rem;">🎉 Congratulations!</p>
+                <p style="margin: 10px 0 0 0; color: #34495e;">You've scored 70% or above. You are eligible to collect your certificate!</p>
+            </div>
+
             <div class="wrong-answers" id="wrongAnswers">
                 <h3>Review Your Mistakes</h3>
                 <!-- Wrong answers with explanations will be shown here -->
             </div>
 
             <div class="results-actions">
+                <button id="btnGetCertificate" onclick="window.location.href='certificate.html'" style="display: none; background-color: #28a745;">Get Certificate</button>
                 <button onclick="retakeTest()">Retake Test</button>
                 <button onclick="goHome()">Back to Home</button>
             </div>
@@ -115,6 +129,10 @@
         </footer>
     </div>
 
+    <script src="accessControl.js"></script>
+    <script src="data.js"></script>
+    <script src="navigation.js"></script>
+    <script src="userProfile.js"></script>
     <script src="questionBank.js"></script>
     <script src="test.js"></script>
 </body>

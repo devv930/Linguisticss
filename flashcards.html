@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flashcards - Linguistics Exam Preparation</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="flashcards.css">
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
@@ -22,6 +23,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="home.html">Study Guide</a></li>
                 <li><a href="resources.html">Study Resources</a></li>
+                <li><a href="toc.html">Table of Contents</a></li>
                 <li><a href="flashcards.html" class="active">Flashcards</a></li>
                 <li><a href="ai-tutor.html">AI Tutor</a></li>
                 <li><a href="community.html">Community</a></li>
@@ -36,11 +38,12 @@
         </div>
     </nav>
 
+    <div class="content-wrapper">
     <!-- Main Content -->
     <main class="flashcards-container">
         <header class="flashcards-header">
             <h1>Interactive Flashcards</h1>
-            <p class="flashcards-subtitle">Click or tap on any card to flip and learn key linguistics terms</p>
+            <p class="flashcards-subtitle">Tap or click any card to flip it and learn a key linguistics term.</p>
         </header>
 
         <!-- Controls -->
@@ -95,8 +98,13 @@
         <p>Developed by <strong>Fauz Dev</strong> and <b>SalamDev</b></p>
         <p>&copy; 2024 Linguistics Exam Preparation Guide. All rights reserved.</p>
     </footer>
+    </div>
 
     <!-- JavaScript for Flashcards -->
+    <script src="accessControl.js"></script>
+    <script src="data.js"></script>
+    <script src="navigation.js"></script>
+    <script src="userProfile.js"></script>
     <script src="flashcards.js"></script>
 </body>
 </html>

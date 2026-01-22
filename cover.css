@@ -50,6 +50,30 @@ body {
     background: linear-gradient(90deg, #3498db 0%, #2980b9 50%, #3498db 100%);
 }
 
+/* Dark Mode Styles for Cover */
+body.dark-mode {
+    background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+}
+
+body.dark-mode .cover-page {
+    background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
+    border-color: #30363d;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8),
+                0 0 0 1px rgba(88, 166, 255, 0.05) inset;
+}
+
+body.dark-mode .cover-title,
+body.dark-mode .cover-subtitle {
+    color: #e0e6ed;
+}
+
+body.dark-mode .cover-cta {
+    background: linear-gradient(135deg, #0969da 0%, #033d8b 100%);
+    border-color: #033d8b;
+    color: #e0e6ed;
+}
+
+
 .cover-content {
     padding: 60px 50px;
     min-height: 80vh;

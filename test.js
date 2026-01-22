@@ -3198,6 +3198,34 @@ function submitTest() {
     const score = correct;
     const percentage = Math.round((correct / currentTest.questions.length) * 100);
     
+    // Save certificate data if passed (70% or higher)
+    const btnGetCertificate = document.getElementById('btnGetCertificate');
+    const certificateEligibilityMessage = document.getElementById('certificateEligibilityMessage');
+    if (percentage >= 70) {
+        // Determine level
+        let courseLevel = 'Beginner';
+        if (currentTest.course.includes('10')) courseLevel = '100 Level';
+        else if (currentTest.course.includes('20')) courseLevel = '200 Level';
+
+        const certificateData = {
+            passed: true,
+            score: percentage,
+            courseTitle: currentTest.course,
+            courseLevel: courseLevel,
+            date: new Date().toISOString(),
+            studentName: null // Will be filled in certificate.html
+        };
+        localStorage.setItem('certificateData', JSON.stringify(certificateData));
+        
+        // Show button and eligibility message
+        if (btnGetCertificate) btnGetCertificate.style.display = 'inline-block';
+        if (certificateEligibilityMessage) certificateEligibilityMessage.style.display = 'block';
+    } else {
+        // Hide button if not passed
+        if (btnGetCertificate) btnGetCertificate.style.display = 'none';
+        if (certificateEligibilityMessage) certificateEligibilityMessage.style.display = 'none';
+    }
+    
     // Display results
     document.getElementById('testContainer').style.display = 'none';
     document.getElementById('resultsContainer').style.display = 'block';
@@ -3206,6 +3234,11 @@ function submitTest() {
     document.getElementById('scoreNumber').textContent = score;
     document.getElementById('totalScore').textContent = currentTest.questions.length;
     document.getElementById('scorePercentage').textContent = percentage;
+    
+    // Record test score and completion for dashboard
+    if (typeof userProfile !== 'undefined' && userProfile.recordTestScore) {
+        userProfile.recordTestScore(currentTest.course, percentage);
+    }
     
     // Display wrong answers with explanations
     const wrongAnswersContainer = document.getElementById('wrongAnswers');

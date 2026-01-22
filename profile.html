@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Linguistics Learning</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="profile.css">
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "ulbt2y6yr4");
+</script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Linguistics Guide</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="home.html">Study Guide</a></li>
+                <li><a href="resources.html">Study Resources</a></li>
+                <li><a href="toc.html">Table of Contents</a></li>
+                <li><a href="flashcards.html">Flashcards</a></li>
+                <li><a href="ai-tutor.html">AI Tutor</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+                <li><a href="test.html">Practice Test</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="profile.html" class="active">Profile</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>👤 User Profile</h1>
+                <p class="subtitle">Your Learning Journey</p>
+            </div>
+        </header>
+
+        <main class="profile-main">
+            <!-- Profile Header Section -->
+            <section class="profile-header-section">
+                <div class="profile-card">
+                    <div class="profile-avatar-section">
+                        <div class="profile-avatar" id="profileAvatar">👤</div>
+                        <button class="avatar-edit-btn" id="avatarEditBtn" title="Change Avatar">✏️</button>
+                    </div>
+                    
+                    <div class="profile-info">
+                        <div class="profile-name-level">
+                            <h2 id="profileName">Student</h2>
+                            <span class="profile-level" id="profileLevel">Level 1</span>
+                        </div>
+                        <p id="profileMatric" class="profile-matric"></p>
+                        <p id="profileEmail" class="profile-email"></p>
+                        <p id="profileBio" class="profile-bio">Add a bio to let others know about you!</p>
+                        <p id="joinDate" class="profile-joinDate"></p>
+                    </div>
+                    
+                    <button class="profile-edit-btn" id="editProfileBtn">✏️ Edit Profile</button>
+                </div>
+
+                <!-- Stats Overview -->
+                <div class="stats-overview">
+                    <div class="stat-mini-card">
+                        <p class="stat-label">Total XP</p>
+                        <p class="stat-value" id="totalXP">0</p>
+                    </div>
+                    <div class="stat-mini-card">
+                        <p class="stat-label">Access</p>
+                        <p class="stat-value" id="accessDays">Locked</p>
+                        <p id="accessCountdown" style="font-size:0.85rem; color:#7f8c8d; margin:4px 0 0 0;">—</p>
+                        <p id="accessCode" style="font-size:0.75rem; color:#95a5a6; margin:6px 0 0 0;">Code: —</p>
+                        <p id="accessDevice" style="font-size:0.75rem; color:#95a5a6; margin:2px 0 0 0;">Device: —</p>
+                        <div style="margin-top:8px; display:flex; gap:8px; align-items:center;">
+                            <label for="renewMonths" style="font-size:0.8rem; color:#7f8c8d;">Renew:</label>
+                            <select id="renewMonths" style="padding:6px; font-size:0.9rem;">
+                                <option value="3">3 months</option>
+                                <option value="6">6 months</option>
+                            </select>
+                            <div id="renewPrice" style="font-size:0.9rem; color:#2c3e50; font-weight:600; margin-left:6px;">₦1500</div>
+                        </div>
+                        <button id="renewBtn" style="margin-top:8px; padding:6px 10px; background:#28a745; color:white; border:none; border-radius:6px; cursor:pointer; font-weight:600;">Renew / Pay</button>
+                    </div>
+                    <div class="stat-mini-card">
+                        <p class="stat-label">Current Streak 🔥</p>
+                        <p class="stat-value" id="currentStreak">0</p>
+                    </div>
+                    <div class="stat-mini-card">
+                        <p class="stat-label">Longest Streak 🏆</p>
+                        <p class="stat-value" id="longestStreak">0</p>
+                    </div>
+                    <div class="stat-mini-card">
+                        <p class="stat-label">Total Certs</p>
+                        <p class="stat-value" id="totalCerts">0</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Streak Visualization -->
+            <section class="profile-section">
+                <h2>🔥 Your Study Streak</h2>
+                <div class="streak-container">
+                    <div class="streak-info">
+                        <p class="streak-message" id="streakMessage"></p>
+                        <div class="streak-progress-bar">
+                            <div class="streak-progress-fill" id="streakProgressFill"></div>
+                        </div>
+                        <p class="streak-details">Keep up the momentum to reach level milestones!</p>
+                    </div>
+                    <div class="streak-milestones">
+                        <div class="milestone" data-days="3">3️⃣ <span>Day Streak</span></div>
+                        <div class="milestone" data-days="7">7️⃣ <span>Day Streak</span></div>
+                        <div class="milestone" data-days="14">1️⃣4️⃣ <span>Day Streak</span></div>
+                        <div class="milestone" data-days="21">2️⃣1️⃣ <span>Day Streak</span></div>
+                        <div class="milestone" data-days="30">3️⃣0️⃣ <span>Day Streak</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- XP Progress -->
+            <section class="profile-section">
+                <h2>⭐ Level Progress</h2>
+                <div class="xp-container">
+                    <div class="xp-header">
+                        <span id="currentLevelText">Level 1</span>
+                        <span id="xpText">0 / 100 XP</span>
+                    </div>
+                    <div class="xp-bar">
+                        <div class="xp-fill" id="xpFill"></div>
+                    </div>
+                    <p class="xp-note">Earn XP by completing courses, tests, and challenges!</p>
+                </div>
+            </section>
+
+            <!-- Streak History Calendar -->
+            <section class="profile-section">
+                <h2>📅 Study Calendar</h2>
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button id="prevMonth" class="calendar-nav">←</button>
+                        <h3 id="monthYear"></h3>
+                        <button id="nextMonth" class="calendar-nav">→</button>
+                    </div>
+                    <div class="calendar-weekdays">
+                        <div>Sun</div>
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                    </div>
+                    <div class="calendar-days" id="calendarDays">
+                        <!-- Days will be populated by JS -->
+                    </div>
+                </div>
+                <div class="calendar-legend">
+                    <div class="legend-item"><span class="legend-active"></span> Study Day</div>
+                    <div class="legend-item"><span class="legend-inactive"></span> No Study</div>
+                </div>
+            </section>
+
+            <!-- Achievements -->
+            <section class="profile-section">
+                <h2>🏅 Achievements & Badges</h2>
+                <div class="achievements-grid" id="achievementsGrid">
+                    <!-- Badges will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Recent Activity -->
+            <section class="profile-section">
+                <h2>📊 Recent Activity</h2>
+                <div class="activity-list" id="activityList">
+                    <p style="color: #7f8c8d; text-align: center;">Your activity will appear here.</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Developed by <strong>Fauz Dev</strong> and <b>SalamDev</b></p>
+            <a href="about.html" class="about-link-footer">About Us</a>
+        </footer>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Profile</h2>
+                <button class="modal-close" id="closeEditModal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="editName">Name:</label>
+                    <input type="text" id="editName" placeholder="Your name" maxlength="50">
+                </div>
+                <div class="form-group">
+                    <label for="editEmail">Email:</label>
+                    <input type="email" id="editEmail" placeholder="your@email.com" maxlength="100">
+                </div>
+                <div class="form-group">
+                    <label for="editMatric">Matric Number:</label>
+                    <input type="text" id="editMatric" placeholder="Matric Number" maxlength="30">
+                </div>
+                <div class="form-group">
+                    <label for="editBio">Bio:</label>
+                    <textarea id="editBio" placeholder="Tell us about yourself..." maxlength="200" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editAvatar">Avatar Emoji:</label>
+                    <input type="text" id="editAvatar" placeholder="👤" maxlength="2">
+                    <p class="form-hint">Pick an emoji that represents you!</p>
+                </div>
+                <div class="form-group">
+                    <label for="uploadProfileImage">Upload Profile Image:</label>
+                    <input type="file" id="uploadProfileImage" accept="image/*" />
+                    <p class="form-hint">Upload a JPG, PNG, or GIF (max 5MB)</p>
+                    <div id="imagePreview" style="margin-top:10px; max-width:100px; border-radius:8px; overflow:hidden;"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="cancelEditBtn" class="btn-secondary">Cancel</button>
+                <button id="saveEditBtn" class="btn-primary">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Avatar Picker Modal -->
+    <div class="modal" id="avatarModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Choose Avatar</h2>
+                <button class="modal-close" id="closeAvatarModal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="avatar-picker">
+                    <button class="avatar-option" data-emoji="👤">👤</button>
+                    <button class="avatar-option" data-emoji="😊">😊</button>
+                    <button class="avatar-option" data-emoji="🧑">🧑</button>
+                    <button class="avatar-option" data-emoji="👨‍🎓">👨‍🎓</button>
+                    <button class="avatar-option" data-emoji="👩‍🎓">👩‍🎓</button>
+                    <button class="avatar-option" data-emoji="🎓">🎓</button>
+                    <button class="avatar-option" data-emoji="📚">📚</button>
+                    <button class="avatar-option" data-emoji="🧠">🧠</button>
+                    <button class="avatar-option" data-emoji="⭐">⭐</button>
+                    <button class="avatar-option" data-emoji="🌟">🌟</button>
+                    <button class="avatar-option" data-emoji="🚀">🚀</button>
+                    <button class="avatar-option" data-emoji="🔥">🔥</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="accessControl.js"></script>
+    <script src="data.js"></script>
+    <script src="navigation.js"></script>
+    <script src="userProfile.js"></script>
+    <script src="profile.js"></script>
+</body>
+</html>

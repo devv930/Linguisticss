@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Site Locked — Enter Access Code</title>
+  <link rel="stylesheet" href="lock.css">
+</head>
+<body>
+  <div class="lock-container">
+    <div class="lock-card">
+      <div class="lock-header">
+        <div class="lock-logo">🔒</div>
+        <div>
+          <div class="lock-title">Site Access Locked</div>
+          <p class="lock-desc">Please enter your access code to unlock the site for this device.</p>
+        </div>
+      </div>
+
+      <div id="messageArea" aria-live="polite"></div>
+
+      <form id="unlockForm" class="lock-form" onsubmit="return false;">
+        <input id="studentName" class="input" placeholder="Your full name (e.g. SalamDev)" required />
+        <input id="accessCode" class="input" placeholder="Enter access code (e.g. CSC-XXXX-XXXX-YYYY)" required />
+        <div style="display:flex;gap:10px;align-items:center">
+          <button id="unlockBtn" class="btn">Unlock</button>
+          <div class="hint">Codes expire 30 days after activation and work per device.</div>
+        </div>
+      </form>
+
+      <p class="footer-note">If you believe you received this message in error, contact your instructor.</p>
+    </div>
+  </div>
+
+  <script src="accessControl.js"></script>
+</body>
+</html>

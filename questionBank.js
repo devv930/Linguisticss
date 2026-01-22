@@ -3601,6 +3601,861 @@ const questionBank = {
                 explanation: "Broadcasting facilitates globalization by connecting people worldwide, sharing ideas, cultures, and information, and promoting cross-cultural understanding."
             }
         ]
+    },
+    
+    "YOR 201": {
+        "Introduction to Yoruba phonetics": [
+            {
+                question: "Yoruba phonetics is primarily concerned with:",
+                options: [
+                    "Abstract sound patterns in the mind",
+                    "Physical production and perception of Yoruba speech sounds",
+                    "Writing conventions only",
+                    "Translating Yoruba into English"
+                ],
+                correct: 1,
+                explanation: "Phonetics focuses on how sounds are physically produced, transmitted, and perceived. Yoruba phonetics applies this to actual Yoruba speech, not just abstract patterns."
+            },
+            {
+                question: "Which of the following best describes the goal of Yoruba phonetics?",
+                options: [
+                    "To prescribe correct spelling rules",
+                    "To describe how Yoruba sounds are articulated and heard",
+                    "To classify Yoruba proverbs",
+                    "To study only written texts"
+                ],
+                correct: 1,
+                explanation: "The goal of Yoruba phonetics is descriptive: to show how sounds are produced and perceived, providing a foundation for phonology and orthography."
+            },
+            {
+                question: "In Yoruba phonetics, a 'segment' refers to:",
+                options: [
+                    "Any written letter in the alphabet",
+                    "An individual sound unit such as a vowel or consonant",
+                    "A full Yoruba sentence",
+                    "Only tone marks"
+                ],
+                correct: 1,
+                explanation: "A segment is a single sound unit (consonant or vowel). In Yoruba phonetics, segments combine with tone and syllable structure to form words."
+            },
+            {
+                question: "Why is careful listening important in Yoruba phonetics?",
+                options: [
+                    "Because Yoruba has no written form",
+                    "Because many contrasts depend on subtle differences in sound and tone",
+                    "Because phonetics ignores actual speech",
+                    "Because only spelling matters"
+                ],
+                correct: 1,
+                explanation: "Yoruba has important contrasts in vowel quality, nasality, and tone. Careful listening is needed to identify and describe these accurately."
+            },
+            {
+                question: "Yoruba phonetics is closely linked to:",
+                options: [
+                    "General phonetic theory only",
+                    "Both general phonetic theory and specific Yoruba sound patterns",
+                    "Only Yoruba literature",
+                    "Only English phonology"
+                ],
+                correct: 1,
+                explanation: "The course uses general phonetic concepts (articulatory, acoustic, auditory) to describe Yoruba-specific sound patterns."
+            }
+        ],
+        "Yoruba vowel system": [
+            {
+                question: "Which of the following is a typical oral vowel in Yoruba?",
+                options: [
+                    "/i/",
+                    "/y/",
+                    "/ø/",
+                    "/æ/"
+                ],
+                correct: 0,
+                explanation: "Yoruba has vowels like /i, e, ɛ, a, ɔ, o, u/. Vowels such as /y, ø, æ/ do not belong to the standard Yoruba system."
+            },
+            {
+                question: "Yoruba vowels are described using:",
+                options: [
+                    "Tongue height, tongue advancement, and lip rounding",
+                    "Only loudness and duration",
+                    "Hand gestures",
+                    "Sentence position"
+                ],
+                correct: 0,
+                explanation: "Like other languages, Yoruba vowels are classified by tongue height (high, mid, low), advancement (front, central, back), and lip rounding."
+            },
+            {
+                question: "Advanced tongue root (ATR) harmony in Yoruba refers to:",
+                options: [
+                    "Vowels agreeing in length",
+                    "Vowels agreeing in tongue root position within a word",
+                    "Consonants agreeing in place of articulation",
+                    "Syllables agreeing in tone"
+                ],
+                correct: 1,
+                explanation: "ATR harmony describes how vowels in some Yoruba dialects must match in tongue root position, affecting which vowels can co-occur in a word."
+            },
+            {
+                question: "Minimal pairs like 'bi' and 'bì' show that in Yoruba:",
+                options: [
+                    "Vowel quality is irrelevant",
+                    "Vowel quality and tone can both create meaning contrasts",
+                    "Only consonants matter",
+                    "Spelling is more important than sound"
+                ],
+                correct: 1,
+                explanation: "Changes in vowel quality or tone can create different meanings in Yoruba, so both are crucial in phonetic description."
+            },
+            {
+                question: "In phonetic transcription, Yoruba vowels are represented:",
+                options: [
+                    "With IPA symbols that show their exact quality",
+                    "With any convenient English letters",
+                    "Only with tone marks",
+                    "Without reference to pronunciation"
+                ],
+                correct: 0,
+                explanation: "IPA symbols are used to represent the precise quality of Yoruba vowels, sometimes differing from ordinary orthography."
+            }
+        ],
+        "Yoruba consonant system": [
+            {
+                question: "Which of the following consonants is characteristic of Yoruba?",
+                options: [
+                    "/kp/",
+                    "/ʒ/",
+                    "/θ/",
+                    "/ð/"
+                ],
+                correct: 0,
+                explanation: "Yoruba has labial‑velar stops /kp/ and /gb/, which are not found in many European languages."
+            },
+            {
+                question: "Classifying Yoruba consonants involves describing their:",
+                options: [
+                    "Place and manner of articulation, and voicing",
+                    "Colour and size",
+                    "Spelling and frequency",
+                    "Position on the page"
+                ],
+                correct: 0,
+                explanation: "Consonants are classified by place (bilabial, alveolar, etc.), manner (stop, nasal, etc.), and voicing (voiced vs voiceless)."
+            },
+            {
+                question: "Nasals in Yoruba can occur:",
+                options: [
+                    "Only at the beginning of words",
+                    "As independent segments and as part of prenasalised clusters",
+                    "Only word-finally",
+                    "Only in borrowed words"
+                ],
+                correct: 1,
+                explanation: "Yoruba has independent nasal consonants and prenasalised segments, which are important for accurate phonetic description."
+            },
+            {
+                question: "The distribution of Yoruba consonants is constrained by:",
+                options: [
+                    "Syllable structure and neighbouring vowels",
+                    "Page layout",
+                    "Choice of font",
+                    "Only semantic factors"
+                ],
+                correct: 0,
+                explanation: "Consonant distribution is shaped by preferred CV syllable structure and the influence of surrounding vowels and nasality."
+            },
+            {
+                question: "Labial‑velar stops like /kp/ and /gb/ are produced by:",
+                options: [
+                    "Using only the lips",
+                    "Simultaneous closure at the lips and the velum",
+                    "Only the tongue tip",
+                    "Only the glottis"
+                ],
+                correct: 1,
+                explanation: "These sounds involve a double articulation: one at the lips and one at the soft palate, giving them their special quality."
+            }
+        ],
+        "Tone in Yoruba": [
+            {
+                question: "Yoruba is described as a tone language because:",
+                options: [
+                    "It is spoken musically",
+                    "Pitch differences can change word meaning",
+                    "It has many consonants",
+                    "It has long words"
+                ],
+                correct: 1,
+                explanation: "In Yoruba, words that are segmentally identical can differ in meaning solely because of pitch (tone) patterns."
+            },
+            {
+                question: "The basic tonal system of Yoruba is usually analysed as:",
+                options: [
+                    "Two tones: high and low",
+                    "Three tones: High, Mid, Low",
+                    "Four tones",
+                    "No tones"
+                ],
+                correct: 1,
+                explanation: "Standard descriptions posit three level tones in Yoruba: High (H), Mid (M), and Low (L)."
+            },
+            {
+                question: "Downstep in Yoruba refers to:",
+                options: [
+                    "A sudden drop from High to Low tone",
+                    "A lowered High tone that follows another High tone",
+                    "Rising tone from Low to High",
+                    "Tone on borrowed words only"
+                ],
+                correct: 1,
+                explanation: "Downstep is when a High tone is realised at a lower pitch than a preceding High, often due to a floating Low tone."
+            },
+            {
+                question: "Tone sandhi in Yoruba describes:",
+                options: [
+                    "Random pitch changes",
+                    "Systematic tone changes in connected speech",
+                    "Only musical intonation",
+                    "Stress placement"
+                ],
+                correct: 1,
+                explanation: "Tone sandhi covers regular tonal alternations that occur when words are combined in phrases and sentences."
+            },
+            {
+                question: "Marking tone in teaching texts is important because:",
+                options: [
+                    "Tone has no effect on meaning",
+                    "Tone helps learners avoid confusing words with different meanings",
+                    "It decorates the page",
+                    "It replaces vowel letters"
+                ],
+                correct: 1,
+                explanation: "Tone marks guide learners so that they pronounce and interpret Yoruba words correctly, especially in minimal pairs."
+            }
+        ],
+        "Syllable structure and phonotactics in Yoruba": [
+            {
+                question: "The most common syllable structure in Yoruba is:",
+                options: [
+                    "CVC with many clusters",
+                    "Simple CV syllables",
+                    "VCC",
+                    "Only consonants"
+                ],
+                correct: 1,
+                explanation: "Yoruba strongly favours simple CV syllables, with very restricted consonant clusters."
+            },
+            {
+                question: "Phonotactics in Yoruba refers to:",
+                options: [
+                    "Rules of sentence order",
+                    "Allowed combinations of sounds within syllables and words",
+                    "Rules for translating texts",
+                    "Rules of handwriting"
+                ],
+                correct: 1,
+                explanation: "Phonotactic rules specify which sound combinations are permitted and how borrowed words are adapted."
+            },
+            {
+                question: "Borrowed words with complex clusters are often adapted into Yoruba by:",
+                options: [
+                    "Deleting all consonants",
+                    "Inserting vowels to break up clusters",
+                    "Removing all vowels",
+                    "Leaving the cluster unchanged"
+                ],
+                correct: 1,
+                explanation: "Epenthetic vowels are frequently inserted to fit Yoruba CV patterns, e.g., 'school' becoming something like 'súkùùlù'."
+            },
+            {
+                question: "Knowledge of syllable structure is important for:",
+                options: [
+                    "Accurate phonetic transcription and later phonological analysis",
+                    "Decorating exercise books",
+                    "Choosing handwriting style",
+                    "Ignoring tone"
+                ],
+                correct: 0,
+                explanation: "Understanding allowed syllable shapes helps students transcribe words correctly and analyse sound patterns."
+            },
+            {
+                question: "Yoruba generally avoids:",
+                options: [
+                    "Word‑initial vowels",
+                    "Complex word‑final consonant clusters",
+                    "CV syllables",
+                    "Use of tone"
+                ],
+                correct: 1,
+                explanation: "Complex clusters, especially at the ends of words, are rare and typically simplified to fit the preferred CV pattern."
+            }
+        ],
+        "Phonetic transcription of Yoruba words": [
+            {
+                question: "Phonetic transcription of Yoruba words aims to:",
+                options: [
+                    "Represent actual pronunciation accurately using IPA",
+                    "Copy ordinary spelling exactly",
+                    "Ignore vowel quality and tone",
+                    "Replace Yoruba with English"
+                ],
+                correct: 0,
+                explanation: "Phonetic transcription uses IPA to show details of pronunciation, including vowel quality, nasality, length, and tone."
+            },
+            {
+                question: "One difference between Yoruba orthography and phonetic transcription is that:",
+                options: [
+                    "Orthography never marks tone",
+                    "Transcription can show fine details like nasalisation and vowel quality",
+                    "Transcription uses fewer symbols",
+                    "Orthography is always more precise"
+                ],
+                correct: 1,
+                explanation: "Phonetic transcription is designed to be phonetically precise, including distinctions that ordinary spelling may not show consistently."
+            },
+            {
+                question: "When moving from spelling to IPA, students must:",
+                options: [
+                    "Ignore tone and stress",
+                    "Pay attention to actual sound patterns, not just letters",
+                    "Translate into English first",
+                    "Invent new symbols"
+                ],
+                correct: 1,
+                explanation: "Accurate transcription depends on listening to real pronunciation and knowing how letters map onto sounds and tones."
+            },
+            {
+                question: "Practice with Yoruba phonetic transcription helps students to:",
+                options: [
+                    "Memorise spelling only",
+                    "Develop listening skills and consistency in analysing sounds",
+                    "Avoid learning IPA",
+                    "Ignore phonological processes"
+                ],
+                correct: 1,
+                explanation: "Regular transcription practice strengthens listening ability and prepares students for advanced phonological analysis."
+            },
+            {
+                question: "In narrow transcription of Yoruba, a transcriber may indicate:",
+                options: [
+                    "Only consonants",
+                    "Details such as nasalisation, length, and subtle vowel quality differences",
+                    "Only punctuation",
+                    "Only word boundaries"
+                ],
+                correct: 1,
+                explanation: "Narrow transcription includes fine phonetic details that go beyond broad phonemic representation."
+            }
+        ]
+    },
+    
+    "YOR 203": {
+        "Àkópọ̀ Kọ́ọ̀sì": [
+            {
+                question: "Kí ni ètè pàtàkì kọ́ọ̀sì YOR 203?",
+                options: [
+                    "Kí akẹ́kọ̀ọ́ máa sọ Gẹ̀ẹ́sì dáadáa",
+                    "Kí akẹ́kọ̀ọ́ ní ìmọ̀ jinlẹ̀ ní àkọsílẹ̀, ìkọ̀wé àti kíkà Yorùbá",
+                    "Kí akẹ́kọ̀ọ́ kọ́ amúlétutù",
+                    "Kí akẹ́kọ̀ọ́ máa ka ìwé Látìn"
+                ],
+                correct: 1,
+                explanation: "Kọ́ọ̀sì YOR 203 ń dojú kọ ìmúlò àkọsílẹ̀ Yorùbá, ìkọ̀wé onímọ̀ àti kíkà ìtàn àti àpilẹ̀kọ pẹ̀lú ìtúpalẹ̀ jinlẹ̀."
+            },
+            {
+                question: "Gẹ́gẹ́ bí àkọsílẹ̀ kóọ̀sì, àwọn akẹ́kọ̀ọ́ gbọ́dọ̀:",
+                options: [
+                    "Kọ́ láti ka ìwé Yorùbá láì túmọ̀ ohunkóhun",
+                    "Ni agbára láti kọ́, ṣe àtúnṣe, àti ka ìwé Yorùbá onímọ̀",
+                    "Kó dá lórí kíkà ìwé Gẹ̀ẹ́sì nìkan",
+                    "Má ṣe àtúnṣe aṣiṣe gírámà rárá"
+                ],
+                correct: 1,
+                explanation: "Àfojúsùn ni kí akẹ́kọ̀ọ́ lè kọ́ àti ka Yorùbá ní ipele onímọ̀, kí wọn sì lè ṣe àtúnṣe ìkọ̀wé tí wọ́n kọ tàbí tí ẹlòmíràn kọ."
+            },
+            {
+                question: "Ọ̀kan lára ohun tí a fojú kóọ̀sì YOR 203 kàn ni:",
+                options: [
+                    "Ìmúlò Yorùbá nínú fíìmù pẹ̀lú àwòrán",
+                    "Ìdàgbàsókè ìkọ̀wé ìjíròrò onímọ̀ ní Yorùbá",
+                    "Ìmúlò ètò kọ̀mpútà tuntun",
+                    "Ìtàn àwon orílẹ̀-èdè míì"
+                ],
+                correct: 1,
+                explanation: "Kọ́ọ̀sì náà fẹ́ kí akẹ́kọ̀ọ́ lè lo Yorùbá gẹ́gẹ́ bí èdè ìjíròrò onímọ̀ ní àwùjọ, ìwé ìmọ̀ àti iṣẹ́ àgbá."
+            },
+            {
+                question: "Ìpele tí a ń retí kúrò lọ́dọ akẹ́kọ̀ọ́ YOR 203 ni:",
+                options: [
+                    "Pé kí wọ́n mọ àwọn ọ̀rọ̀ ojoojúmọ́ díẹ̀",
+                    "Pé kí wọ́n lè kọ́ àti ka Yorùbá ní ipele ilé-ẹ̀kọ́ gíga",
+                    "Pé kí wọ́n máa sọ èdè míì",
+                    "Pé kí wọ́n má ní kíkọ́ rárá"
+                ],
+                correct: 1,
+                explanation: "Kọ́ọ̀sì náà ń fọkàn tán pé akẹ́kọ̀ọ́ lè lo Yorùbá ní ipele ilé-ẹ̀kọ́ gíga fún ìwádìí, ìkọ̀wé, àti iṣẹ́."
+            }
+        ],
+        "Àkọsílẹ̀ Yorùbá àti àfihàn àmì-òòrò": [
+            {
+                question: "Nínú àkọsílẹ̀ Yorùbá, anfààní lílo àmì‑òòrò tó bófin mu ni:",
+                options: [
+                    "Kí ìwé mọ́ lẹ́wà gan-an",
+                    "Kí ìtumọ̀ tóónù, fawẹ́lì àti gírámà lè hàn kedere",
+                    "Kí a lè dín iye ọ̀rọ̀ kù",
+                    "Kí a lè yọ gbogbo tónù kúrò"
+                ],
+                correct: 1,
+                explanation: "Àmì‑òòrò jẹ́ kókó fún fífi iyatọ̀ tónù, fawẹ́lì àti ìdálẹ́jú gírámà hàn kí ìtumọ̀ má bàjẹ́."
+            },
+            {
+                question: "Àwọn àmì gígùn àti àmì ìdínkù nínú Yorùbá:",
+                options: [
+                    "Kì í ṣe pàtàkì fún ìtumọ̀",
+                    "Ṣe ìfihàn ìyàtọ̀ tónù gíga àti kékeré",
+                    "Jẹ́ àṣekágba àwòrán lasán",
+                    "Ṣe aṣojú ìpinnu onkọ̀wé"
+                ],
+                correct: 1,
+                explanation: "Àmì gígùn àti àmì ìdínkù ń ran wa lọ́wọ́ láti mọ tónù gíga tàbí kékèké, tó ṣe pàtàkì fún ìtumọ̀ ọ̀rọ̀."
+            },
+            {
+                question: "Láti yà ìkọ̀wé onímọ̀ sọ́tọ̀ kúrò nínú èdè ojoojúmọ́, akẹ́kọ̀ọ́ gbọ́dọ̀:",
+                options: [
+                    "Lo èdè ìròyìn lasán",
+                    "Tẹ̀lé ìlànà gírámà, tónù, àti àtọka àsọyé tó kedere",
+                    "Kó yé ìtumọ̀ kankan",
+                    "Má fi àmì‑òòrò kankan sílẹ̀"
+                ],
+                correct: 1,
+                explanation: "Ìkọ̀wé onímọ̀ ní Yorùbá fẹ́ ìlànà gírámà, tónù àti àtúpalẹ̀ ọrọ̀ tó muna jù ti èdè ojoojúmọ́ lọ."
+            },
+            {
+                question: "Ìmúlò àmì tóónù tó péye ń ran wa lọ́wọ́ láti:",
+                options: [
+                    "Dín ìwé kù",
+                    "Yago fún ìdìbàjẹ́ ìtumọ̀ nínú ọ̀rọ̀ tó jọ ara wọn",
+                    "Ṣe ìtàn ìtàn àròsọ",
+                    "Yọ gbogbo ìbeèrè kúrò"
+                ],
+                correct: 1,
+                explanation: "Ọ̀pọ̀ ọ̀rọ̀ Yorùbá jọ ara wọn ní fawẹ́lì àti końsónántì, tónù ló sì ń yà wọn. Àmì tónù tó dáa yago fún ìdàrú."
+            }
+        ],
+        "Ìkọ̀wé ìtàn àti àpilẹ̀kọ ní èdè Yorùbá": [
+            {
+                question: "Ìkọ̀wé ìtàn rere ní Yorùbá gbọ́dọ̀ ní:",
+                options: [
+                    "Ìbẹ̀rẹ̀, àárín àti ìparí tó ṣòro láti yà",
+                    "Ìbẹ̀rẹ̀, àárín àti ìparí tó hàn kedere",
+                    "Ìpín kan ṣoṣo",
+                    "Àìní akopọ̀"
+                ],
+                correct: 1,
+                explanation: "Ìtàn onímọ̀ ní ìbẹ̀rẹ̀, àárín àti ìparí tó hàn gbangba, kí olùkà lè tọ́ ìrìnàjò ìtàn náà."
+            },
+            {
+                question: "Nípa àpilẹ̀kọ ìtúpalẹ̀, akẹ́kọ̀ọ́ gbọ́dọ̀:",
+                options: [
+                    "Ṣàlàyé ìtàn nìkan láì ṣe ìtúpalẹ̀",
+                    "Ṣe àfihàn àbá lórí, àlàyé, àti àpẹẹrẹ tó dá lórí ìrònú",
+                    "Ko gbogbo ìtàn sílẹ̀ láì mọ àfojúsùn",
+                    "Kó yá ìtàn sọ́tọ̀ kúrò ní gírámà"
+                ],
+                correct: 1,
+                explanation: "Àpilẹ̀kọ ìtúpalẹ̀ ń bẹ̀rẹ̀ láti inú ìrònú, ó sì ń fi àbá, àlàyé àti àpẹẹrẹ hàn ní ìtọ́sọ́nà."
+            },
+            {
+                question: "Ìlànà ìpín (paragraph) tó dára yẹ kí ó:",
+                options: [
+                    "Ni ọ̀rọ̀ jinlẹ̀ púpọ̀ láì sí ìlànà",
+                    "Dárú pọ̀ láì sí àkòrí kan ṣoṣo",
+                    "Ní àkòrí kan pẹ̀lú àwọn gbolohun tó ń ṣàlàyé e",
+                    "Má ní àkòrí kankan"
+                ],
+                correct: 2,
+                explanation: "Ìpín kọọkan gbọ́dọ̀ dojú kọ àkòrí kan, àwọn gbolohun inú rẹ̀ sì ń ṣàlàyé àkòrí yẹn."
+            },
+            {
+                question: "Ìkọ̀wé ìròyìn àkọsílẹ̀ yàtọ̀ sí èdè ojoojúmọ́ nítorí pé:",
+                options: [
+                    "Ó ń lo ìṣe gírámà àti àtúpalẹ̀ tó muna",
+                    "Ó kì í ṣàlàyé ohunkóhun",
+                    "Ó ń lo òwe púpọ̀ ju ìmọ̀ lọ",
+                    "Kò ní àfojúsùn olùkà kankan"
+                ],
+                correct: 0,
+                explanation: "Ìròyìn onímọ̀ gbọdọ̀ tẹ̀lé ìlànà gírámà, àtọkasi orísun àti ìmúlò àfihàn ìmọ̀ tó mọ́lára."
+            }
+        ],
+        "Ìmúlò ìtúmọ̀ àti kíkà ìwé Yorùbá": [
+            {
+                question: "Ní kíkà ìwé Yorùbá onímọ̀, ohun tí akẹ́kọ̀ọ́ kọ́kọ́ yẹ kí ó wá ni:",
+                options: [
+                    "Àwọn àwòrán",
+                    "Àkọ́lé àkọlé àti àfojúsùn onkọ̀wé",
+                    "Ìpinnu olùkà",
+                    "Ìròyìn tita ìwé"
+                ],
+                correct: 1,
+                explanation: "Ìmọ̀ àkọlé àti àfojúsùn onkọ̀wé ń ran akẹ́kọ̀ọ́ lọ́wọ́ láti lóye bí ìtúpalẹ̀ tó kù ṣe yẹ kí ó lọ."
+            },
+            {
+                question: "Ìmúlò ìbéèrè ìtúmọ̀ tó jinlẹ̀ nínú kíkà:",
+                options: [
+                    "Ń ran akẹ́kọ̀ọ́ lọ́wọ́ láti wá ìtumọ̀ gangan àti ìfojúsọ́nà onkọ̀wé",
+                    "Kò ní ìtópinpin kankan",
+                    "Jẹ́ àṣekágba kọ́míkì",
+                    "Kàn jẹ́ ayẹyẹ àrọ̀"
+                ],
+                correct: 0,
+                explanation: "Ìbéèrè ìtúmọ̀ tó jinlẹ̀ ń jẹ́ kí akẹ́kọ̀ọ́ mọ ohun tí onkọ̀wé fẹ́ sọ, ìdí tí ó fi sọ ó, àti ìtàn àbá tó wà lẹ́yìn."
+            },
+            {
+                question: "Ìtúpalẹ̀ kíkà ìwé Yorùbá tún ń ran akẹ́kọ̀ọ́ lọ́wọ́ láti:",
+                options: [
+                    "Ṣe àfikún ìmọ̀ wọn nípa gírámà àti àkópọ̀ ìtàn",
+                    "Parun ìtàn náà",
+                    "Kọ gbogbo gbolohun sílẹ̀ láì mọ ìtumọ̀",
+                    "Ṣe àfikún àwọn àṣìṣe"
+                ],
+                correct: 0,
+                explanation: "Nípa ìtúpalẹ̀ kíkà, akẹ́kọ̀ọ́ ń rí bí gírámà, akopọ̀ ìtàn àti tónù ṣe ń ṣiṣẹ́ pọ̀ láti dá ìtumọ̀ sílẹ̀."
+            }
+        ]
+    },
+    
+    "GST 201": {
+        "What is philosophy?": [
+            {
+                question: "Philosophy is best described as:",
+                options: [
+                    "A collection of personal opinions",
+                    "Systematic and critical reflection on fundamental questions of life",
+                    "Laboratory science only",
+                    "Religious doctrine"
+                ],
+                correct: 1,
+                explanation: "Philosophy uses disciplined reasoning and analysis to examine questions about reality, knowledge, value, and human existence."
+            },
+            {
+                question: "One way philosophy differs from common‑sense thinking is that it:",
+                options: [
+                    "Rejects all reasoning",
+                    "Requires clear arguments and justification for claims",
+                    "Relies only on tradition",
+                    "Avoids abstract questions"
+                ],
+                correct: 1,
+                explanation: "While common sense may rest on habit, philosophy demands explicit reasons and logical support for beliefs."
+            },
+            {
+                question: "Philosophical questions are often about:",
+                options: [
+                    "Everyday gossip",
+                    "Ultimate issues such as reality, knowledge, and morality",
+                    "Sports scores",
+                    "Weather patterns"
+                ],
+                correct: 1,
+                explanation: "Philosophy focuses on deep, general questions that underlie many areas of human thought and practice."
+            },
+            {
+                question: "Philosophy relates to science in that it:",
+                options: [
+                    "Ignores scientific findings",
+                    "Examines assumptions, concepts, and methods used in the sciences",
+                    "Replaces experiments entirely",
+                    "Only repeats scientific results"
+                ],
+                correct: 1,
+                explanation: "Philosophy of science analyses the concepts and reasoning that structure scientific inquiry."
+            },
+            {
+                question: "A key feature of philosophical activity is:",
+                options: [
+                    "Uncritical acceptance of authority",
+                    "Careful reasoning and readiness to evaluate assumptions",
+                    "Avoidance of debate",
+                    "Reliance on emotion alone"
+                ],
+                correct: 1,
+                explanation: "Philosophy encourages critical thinking, questioning of assumptions, and rational discussion of alternatives."
+            }
+        ],
+        "Branches of philosophy": [
+            {
+                question: "Metaphysics is the branch of philosophy that studies:",
+                options: [
+                    "Moral values",
+                    "The nature of reality and existence",
+                    "Rules of correct reasoning",
+                    "Beauty and art"
+                ],
+                correct: 1,
+                explanation: "Metaphysics asks what kinds of things exist and how they are related, including questions about mind, matter, and identity."
+            },
+            {
+                question: "Epistemology is primarily concerned with:",
+                options: [
+                    "What we ought to do",
+                    "What knowledge is and how we know",
+                    "How to create art",
+                    "Political organisation"
+                ],
+                correct: 1,
+                explanation: "Epistemology investigates the nature, sources, and limits of knowledge and justified belief."
+            },
+            {
+                question: "Ethics as a branch of philosophy deals with:",
+                options: [
+                    "Sentence structure",
+                    "Questions of right and wrong, good and bad",
+                    "Logical form of arguments only",
+                    "Physical health"
+                ],
+                correct: 1,
+                explanation: "Ethics examines moral values, principles, and theories that guide human conduct."
+            },
+            {
+                question: "Social and political philosophy studies:",
+                options: [
+                    "Only natural science",
+                    "Justice, rights, authority, and the state",
+                    "Only religious rituals",
+                    "Grammar rules"
+                ],
+                correct: 1,
+                explanation: "This branch explores how societies should be organised and how power and resources ought to be distributed."
+            },
+            {
+                question: "Logic, as a philosophical branch, focuses on:",
+                options: [
+                    "Persuasion by any means",
+                    "The principles of valid reasoning and argument",
+                    "Historical events only",
+                    "Personal preferences"
+                ],
+                correct: 1,
+                explanation: "Logic studies how arguments can be structured so that the conclusion follows from the premises."
+            }
+        ],
+        "Epistemology: knowledge and belief": [
+            {
+                question: "A traditional analysis of knowledge sees it as:",
+                options: [
+                    "Any belief one holds strongly",
+                    "Justified true belief",
+                    "A lucky guess",
+                    "Only what experts say"
+                ],
+                correct: 1,
+                explanation: "Classically, knowledge is understood as a belief that is true and supported by adequate justification."
+            },
+            {
+                question: "Which of the following is typically NOT considered a standard source of knowledge?",
+                options: [
+                    "Perception",
+                    "Memory",
+                    "Testimony",
+                    "Horoscopes"
+                ],
+                correct: 3,
+                explanation: "Philosophers usually list perception, memory, testimony, and reason as key sources of knowledge; horoscopes lack rational justification."
+            },
+            {
+                question: "Sceptical arguments in epistemology are important because they:",
+                options: [
+                    "Encourage us to abandon all inquiry",
+                    "Force us to examine how strong our reasons for believing really are",
+                    "Show that knowledge is impossible in every case",
+                    "Replace science with superstition"
+                ],
+                correct: 1,
+                explanation: "Sceptical challenges push us to clarify what counts as good evidence and reliable methods of belief‑formation."
+            },
+            {
+                question: "The difference between knowledge and mere opinion is that knowledge:",
+                options: [
+                    "Can never be questioned",
+                    "Is supported by good reasons and evidence",
+                    "Is always popular",
+                    "Depends only on feelings"
+                ],
+                correct: 1,
+                explanation: "Opinions may be weak or baseless, but knowledge is tied to justification and objective support."
+            },
+            {
+                question: "In academic work, epistemology is relevant because it:",
+                options: [
+                    "Discourages research",
+                    "Helps students assess sources, evidence, and reliability",
+                    "Ignores questions of truth",
+                    "Replaces study with faith"
+                ],
+                correct: 1,
+                explanation: "Understanding epistemology guides students in evaluating readings, arguments, and data critically."
+            }
+        ],
+        "Metaphysics and the nature of reality": [
+            {
+                question: "The mind–body problem in metaphysics asks:",
+                options: [
+                    "How the brain is structured anatomically",
+                    "How mental states are related to physical states",
+                    "Why people dream",
+                    "How to cure diseases"
+                ],
+                correct: 1,
+                explanation: "The mind–body problem concerns whether the mind is distinct from the body and how they interact."
+            },
+            {
+                question: "Materialism as a metaphysical view holds that:",
+                options: [
+                    "Only spiritual beings exist",
+                    "Everything that exists is ultimately physical in nature",
+                    "Only numbers exist",
+                    "Nothing exists at all"
+                ],
+                correct: 1,
+                explanation: "Materialists argue that all phenomena, including mental states, are grounded in physical reality."
+            },
+            {
+                question: "Questions about identity over time ask:",
+                options: [
+                    "Why people change clothes",
+                    "In what sense a person or object remains the same despite change",
+                    "Why there are many people",
+                    "How to get rich quickly"
+                ],
+                correct: 1,
+                explanation: "Metaphysicians study how something can undergo change yet still be counted as the same individual."
+            },
+            {
+                question: "Abstract objects like numbers raise metaphysical questions about:",
+                options: [
+                    "Whether such non‑spatial, non‑temporal things really exist",
+                    "How to count money",
+                    "The best way to teach arithmetic",
+                    "Weather prediction"
+                ],
+                correct: 0,
+                explanation: "Philosophers ask whether mathematical entities are real objects or just useful fictions."
+            }
+        ],
+        "Ethics and moral reasoning": [
+            {
+                question: "Utilitarianism is an ethical theory that judges actions by:",
+                options: [
+                    "Their conformity to tradition",
+                    "Their consequences for overall happiness or welfare",
+                    "The social status of the agent",
+                    "Religious rituals"
+                ],
+                correct: 1,
+                explanation: "Utilitarianism holds that the morally right action is the one that maximises overall good or utility."
+            },
+            {
+                question: "Deontological ethics emphasises:",
+                options: [
+                    "Only results",
+                    "Duties, rules, and respect for persons",
+                    "Personal gain",
+                    "Majority opinion"
+                ],
+                correct: 1,
+                explanation: "Deontologists argue that some actions are right or wrong in themselves, regardless of consequences."
+            },
+            {
+                question: "Virtue ethics focuses on:",
+                options: [
+                    "Single isolated acts only",
+                    "The character and habits of the moral agent",
+                    "Economic success",
+                    "Legal punishment"
+                ],
+                correct: 1,
+                explanation: "Virtue ethics asks what kind of person one should become, stressing traits like honesty and courage."
+            },
+            {
+                question: "A descriptive statement in ethics is one that:",
+                options: [
+                    "Says what ought to be done",
+                    "Reports facts without evaluation",
+                    "Always praises actions",
+                    "Always condemns actions"
+                ],
+                correct: 1,
+                explanation: "Descriptive claims state how things are, whereas normative claims evaluate actions as right or wrong."
+            },
+            {
+                question: "Good moral reasoning requires that we:",
+                options: [
+                    "Avoid giving reasons",
+                    "Apply our principles consistently across similar cases",
+                    "Rely only on emotion",
+                    "Change views to please others"
+                ],
+                correct: 1,
+                explanation: "Consistency is central to moral argument; we should treat similar cases in similar ways unless we have a relevant difference."
+            }
+        ],
+        "Logic and critical thinking": [
+            {
+                question: "An argument in logic consists of:",
+                options: [
+                    "Only a conclusion",
+                    "Premises offered as reasons for a conclusion",
+                    "Random statements",
+                    "Questions only"
+                ],
+                correct: 1,
+                explanation: "An argument links premises (reasons) to a conclusion, aiming to show that the conclusion should be accepted."
+            },
+            {
+                question: "A valid argument is one in which:",
+                options: [
+                    "The premises and conclusion are all true",
+                    "If the premises are true, the conclusion must be true",
+                    "The conclusion is popular",
+                    "The premises are emotional"
+                ],
+                correct: 1,
+                explanation: "Validity concerns logical form: true premises cannot lead to a false conclusion in a valid argument."
+            },
+            {
+                question: "An ad hominem fallacy occurs when someone:",
+                options: [
+                    "Attacks the person instead of addressing their argument",
+                    "Uses statistics",
+                    "Gives many examples",
+                    "Explains a concept clearly"
+                ],
+                correct: 0,
+                explanation: "Ad hominem attacks focus on the character of the speaker rather than the content of their reasoning."
+            },
+            {
+                question: "A straw man fallacy involves:",
+                options: [
+                    "Ignoring all arguments",
+                    "Misrepresenting an opponent's view to make it easier to attack",
+                    "Using technical terms",
+                    "Repeating premises"
+                ],
+                correct: 1,
+                explanation: "In a straw man, one distorts the original position into a weaker version and then refutes that instead."
+            },
+            {
+                question: "Learning basic logic helps students to:",
+                options: [
+                    "Accept every claim they hear",
+                    "Evaluate arguments, detect fallacies, and reason clearly",
+                    "Avoid reading academic texts",
+                    "Rely only on authority"
+                ],
+                correct: 1,
+                explanation: "Logic and critical thinking strengthen students' ability to analyse arguments in their studies and everyday life."
+            }
+        ]
     }
 };
 
