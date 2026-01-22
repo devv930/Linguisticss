@@ -3,32 +3,85 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Site Locked — Enter Access Code</title>
+  <title>Linguistics Learning Platform — Unlock Access</title>
   <link rel="stylesheet" href="lock.css">
 </head>
 <body>
   <div class="lock-container">
-    <div class="lock-card">
-      <div class="lock-header">
-        <div class="lock-logo">🔒</div>
-        <div>
-          <div class="lock-title">Site Access Locked</div>
-          <p class="lock-desc">Please enter your access code to unlock the site for this device.</p>
+    <!-- Left side: Welcome section -->
+    <div class="lock-welcome">
+      <div class="welcome-content">
+        <h1 class="welcome-title">📚 Linguistics Learning Platform</h1>
+        <p class="welcome-subtitle">Master the fundamentals of linguistic science</p>
+        
+        <div class="features-list">
+          <div class="feature-item">
+            <span class="feature-icon">🎓</span>
+            <span class="feature-text">Comprehensive courses designed for students</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">📊</span>
+            <span class="feature-text">Track your progress and earn certificates</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">⭐</span>
+            <span class="feature-text">Unlock achievements and badges</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">🚀</span>
+            <span class="feature-text">Study at your own pace, anytime</span>
+          </div>
         </div>
       </div>
+    </div>
 
-      <div id="messageArea" aria-live="polite"></div>
-
-      <form id="unlockForm" class="lock-form" onsubmit="return false;">
-        <input id="studentName" class="input" placeholder="Your full name (e.g. SalamDev)" required />
-        <input id="accessCode" class="input" placeholder="Enter access code (e.g. CSC-XXXX-XXXX-YYYY)" required />
-        <div style="display:flex;gap:10px;align-items:center">
-          <button id="unlockBtn" class="btn">Unlock</button>
-          <div class="hint">Codes expire 30 days after activation and work per device.</div>
+    <!-- Right side: Access form -->
+    <div class="lock-form-container">
+      <div class="lock-card">
+        <div class="lock-header">
+          <div class="lock-logo">🔐</div>
+          <div>
+            <div class="lock-title">Unlock Your Access</div>
+            <p class="lock-desc">Enter your access code to get started</p>
+          </div>
         </div>
-      </form>
 
-      <p class="footer-note">If you believe you received this message in error, contact your instructor.</p>
+        <div id="messageArea" aria-live="polite"></div>
+
+        <form id="unlockForm" class="lock-form" onsubmit="return false;">
+          <div class="form-group">
+            <label for="studentName" class="form-label">Your Name</label>
+            <input id="studentName" class="input" placeholder="Enter your full name" required />
+          </div>
+          
+          <div class="form-group">
+            <label for="accessCode" class="form-label">Access Code</label>
+            <input id="accessCode" class="input" placeholder="e.g., CSC-XXXX-XXXX-YYYY" required />
+          </div>
+
+          <button id="unlockBtn" class="btn btn-primary">🔓 Unlock Access</button>
+        </form>
+
+        <!-- Warning Section -->
+        <div class="warning-section">
+          <div class="warning-header">
+            <span class="warning-icon">⚠️</span>
+            <span class="warning-title">Important Security Notice</span>
+          </div>
+          <div class="warning-content">
+            <p><strong>Sharing your access code is not permitted.</strong></p>
+            <ul>
+              <li>Each code is tied to ONE device only</li>
+              <li>Sharing accounts will result in automatic deactivation</li>
+              <li>Your account may be permanently banned</li>
+              <li>Codes expire 30 days after activation</li>
+            </ul>
+            <p class="warning-footer">Keep your access code private and secure.</p>
+          </div>
+        </div>
+
+        <p class="footer-note">Questions? Contact your instructor or support team.</p>
+      </div>
     </div>
   </div>
 
