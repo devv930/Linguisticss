@@ -424,34 +424,37 @@ body {
     .certificate-container {
         transform: scale(0.6);
         transform-origin: top center;
-        margin-bottom: -300px; /* Compensate for scaling whitespace */
+        margin-bottom: -300px;
     }
 }
+
 @media (max-width: 768px) {
     .input-card {
-        padding: 30px 20px;
+        padding: 20px 15px;
         max-width: 100%;
-        margin: 20px;
+        margin: 15px;
     }
 
     .input-card h2 {
-        font-size: 24px;
+        font-size: 22px;
     }
 
     .form-group input {
         padding: 12px;
-        font-size: 16px; /* Prevent zoom on iOS */
+        font-size: 16px;
     }
 
     .btn-generate {
         padding: 14px;
         font-size: 15px;
+        width: 100%;
     }
 
     .actions-bar {
         flex-direction: column;
         gap: 10px;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
+        padding: 0 15px;
     }
 
     .btn-action {
@@ -468,18 +471,40 @@ body {
         margin-left: auto;
         margin-right: auto;
     }
+
+    #history-list {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .history-item {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .history-item button {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
 }
+
 @media (max-width: 480px) {
     .input-card {
-        padding: 20px 15px;
+        padding: 15px 12px;
+        margin: 10px;
     }
 
     .input-card h2 {
-        font-size: 20px;
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .input-card p {
+        font-size: 13px;
     }
 
     .form-group {
-        margin-bottom: 15px;
+        margin-bottom: 12px;
     }
 
     .form-group label {
@@ -494,16 +519,19 @@ body {
     .btn-generate {
         padding: 12px;
         font-size: 14px;
+        width: 100%;
     }
 
     .actions-bar {
         gap: 8px;
+        padding: 0 10px;
+        margin-bottom: 10px;
     }
 
     .btn-action {
         padding: 10px 12px;
-        font-size: 13px;
-        gap: 8px;
+        font-size: 12px;
+        gap: 6px;
     }
 
     .btn-action svg {
@@ -518,4 +546,52 @@ body {
         margin-left: auto;
         margin-right: auto;
     }
+
+    #history-section {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    #history-list {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .history-item {
+        padding: 10px 12px;
+        font-size: 13px;
+        border-radius: 6px;
+        word-wrap: break-word;
+    }
+
+    .history-item button {
+        padding: 8px 10px;
+        font-size: 12px;
+        margin-top: 8px;
+        width: 100%;
+    }
+
+    .btn-secondary {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+
+    .modal-content {
+        width: 95%;
+        max-height: 90vh;
+        padding: 15px;
+    }
+
+    .modal-body {
+        padding: 10px;
+    }
+
+    /* Ensure certificate text is readable on mobile */
+    .certificate-body p,
+    .certificate-body h2 {
+        word-wrap: break-word;
+    }
+}
 }
