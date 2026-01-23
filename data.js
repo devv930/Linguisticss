@@ -497,7 +497,7 @@ const courses200 = [
     },
     {
         code: "GST 201",
-        title: "Philosophy",
+        title: "Philosophy, Logic & Human Existence",
         topics: [
             {
                 title: "What is philosophy?",
@@ -522,6 +522,14 @@ const courses200 = [
             {
                 title: "Logic and critical thinking",
                 explanation: "The final topic introduces elements of informal and formal logic that underpin critical thinking. Students study the structure of arguments (premises and conclusions), common valid argument forms, and frequent fallacies such as ad hominem, straw man, and false dilemma. Simple symbolisation and truth‑table techniques may be introduced to show how logical form can be analysed precisely. The topic connects these tools to reading, writing, and decision‑making skills needed in other university courses and in everyday life."
+            },
+            {
+                title: "Ontology: What exists and what is real?",
+                explanation: "Ontology is the philosophical study of being and existence—what kinds of things exist and what it means to exist. Central questions include: Do abstract objects (numbers, properties) exist? Is consciousness fundamental to reality? Does God exist? What is the nature of objects and substances? Ontological frameworks range from materialism (only physical matter exists) to idealism (only mind exists) to dualism (both mind and matter exist). Existence can be discussed at different levels: actual existence (things that currently exist), possible existence (things that could exist), and necessary vs. contingent existence. Ontology explores the structure of reality, categories of being (objects, properties, events, processes), and the relationships among them. Understanding ontology clarifies what we're claiming exists and why, shaping metaphysical and scientific worldviews."
+            },
+            {
+                title: "Human Existence: Freedom, responsibility, and meaning",
+                explanation: "This topic addresses foundational questions about human existence: What does it mean to be human? Do humans have free will or are we determined by factors beyond our control? What responsibility comes with our choices? What creates meaning in life? Existentialism emphasizes that humans exist first and define their essence through choices and actions. The concept of freedom carries both possibility and anxiety—we are 'condemned to be free.' Responsibility emerges from our capacity to choose; we cannot escape responsibility by claiming external forces determined our choices. Meaning is not given but created through authentic engagement with life, relationships, work, and values. Questions of mortality, authenticity, social roles, and personal identity shape human existence. Different cultures and traditions offer varying perspectives on human nature, purpose, and flourishing. Reflecting on human existence helps clarify personal values, ethical commitments, and life direction."
             }
         ]
     },
