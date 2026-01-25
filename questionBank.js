@@ -4456,6 +4456,310 @@ const questionBank = {
                 explanation: "Logic and critical thinking strengthen students' ability to analyse arguments in their studies and everyday life."
             }
         ]
+    },
+    "GST 101": {
+        "English Communication: Spoken and Written": [
+            {
+                question: "The main difference between spoken and written English is:",
+                options: [
+                    "Spoken English is always more correct",
+                    "Spoken English is immediate with feedback; written English is permanent and formal",
+                    "Written English is never used in academic settings",
+                    "There is no difference between them"
+                ],
+                correct: 1,
+                explanation: "Spoken English allows real-time feedback and uses tone/gestures; written English is permanent and requires clarity through words alone."
+            },
+            {
+                question: "Which is a characteristic of formal written communication?",
+                options: [
+                    "Use of contractions",
+                    "Informal vocabulary",
+                    "Complete sentence structure with proper punctuation",
+                    "Casual tone similar to conversation"
+                ],
+                correct: 2,
+                explanation: "Formal written communication requires complete sentences, proper punctuation, and standard grammar conventions."
+            },
+            {
+                question: "Effective communication in English requires:",
+                options: [
+                    "Speaking loudly",
+                    "Using complicated words",
+                    "Understanding audience, context, and purpose",
+                    "Never asking for clarification"
+                ],
+                correct: 2,
+                explanation: "Successful communication depends on tailoring message to audience, understanding the context, and being clear about your purpose."
+            }
+        ],
+        "Grammar Fundamentals": [
+            {
+                question: "Which sentence demonstrates correct subject-verb agreement?",
+                options: [
+                    "The team are playing well",
+                    "The team is playing well",
+                    "She don't like ice cream",
+                    "The students has completed the work"
+                ],
+                correct: 1,
+                explanation: "'The team' is a singular collective noun, so 'is' (singular verb) is correct."
+            },
+            {
+                question: "A complex sentence contains:",
+                options: [
+                    "Two independent clauses joined by 'and'",
+                    "One independent clause and at least one dependent clause",
+                    "Only dependent clauses",
+                    "Multiple verbs in the same clause"
+                ],
+                correct: 1,
+                explanation: "A complex sentence has an independent clause that can stand alone plus one or more dependent clauses."
+            },
+            {
+                question: "Which verb tense is used for an action completed before another past action?",
+                options: [
+                    "Simple past",
+                    "Present perfect",
+                    "Past perfect",
+                    "Future perfect"
+                ],
+                correct: 2,
+                explanation: "Past perfect (had + past participle) shows an action completed before another past event."
+            },
+            {
+                question: "In the sentence 'She quickly ran to the store,' what part of speech is 'quickly'?",
+                options: [
+                    "Adjective",
+                    "Adverb",
+                    "Preposition",
+                    "Noun"
+                ],
+                correct: 1,
+                explanation: "'Quickly' is an adverb modifying the verb 'ran,' describing how the action was performed."
+            }
+        ],
+        "Vocabulary Development and Word Usage": [
+            {
+                question: "Synonyms are words that:",
+                options: [
+                    "Sound the same but have different meanings",
+                    "Have similar meanings but different connotations",
+                    "Are spelled the same but pronounced differently",
+                    "Come from different languages"
+                ],
+                correct: 1,
+                explanation: "Synonyms have similar meanings, though they may differ in connotation (emotional association) and context appropriateness."
+            },
+            {
+                question: "The difference between 'their,' 'there,' and 'they're' is:",
+                options: [
+                    "There is no difference",
+                    "They are all adverbs",
+                    "Homophones with different meanings and uses",
+                    "Different spellings of the same word"
+                ],
+                correct: 2,
+                explanation: "These homophones sound alike but differ: 'their' (possessive), 'there' (location), 'they're' (they are)."
+            },
+            {
+                question: "Connotation refers to:",
+                options: [
+                    "The spelling of a word",
+                    "The emotional or cultural association of a word beyond its literal meaning",
+                    "The pronunciation of a word",
+                    "The origin of a word"
+                ],
+                correct: 1,
+                explanation: "Connotation is the emotional tone and associations a word carries, different from its denotation (literal meaning)."
+            }
+        ],
+        "Reading Comprehension and Analysis": [
+            {
+                question: "The main idea of a text is:",
+                options: [
+                    "The first sentence of the text",
+                    "The central thought the author wants to communicate",
+                    "A detailed fact from the text",
+                    "The title of the text"
+                ],
+                correct: 1,
+                explanation: "The main idea is the primary point or purpose the author presents, which may be stated or implied."
+            },
+            {
+                question: "When reading critically, you should:",
+                options: [
+                    "Accept everything the author says",
+                    "Question the author's purpose, credibility, and evidence",
+                    "Only read the introduction",
+                    "Ignore the author's point of view"
+                ],
+                correct: 1,
+                explanation: "Critical reading involves evaluating the text, author's credibility, evidence provided, and identifying potential bias."
+            },
+            {
+                question: "Supporting details in a text serve to:",
+                options: [
+                    "Confuse the reader",
+                    "Replace the main idea",
+                    "Explain, prove, or develop the main idea",
+                    "Tell unrelated stories"
+                ],
+                correct: 2,
+                explanation: "Supporting details provide evidence, examples, or explanations that develop and substantiate the main idea."
+            }
+        ],
+        "Writing Skills and Composition": [
+            {
+                question: "A thesis statement should:",
+                options: [
+                    "Be vague and general",
+                    "Ask questions instead of making claims",
+                    "Present the main argument or purpose clearly and specifically",
+                    "Be placed at the end of the essay"
+                ],
+                correct: 2,
+                explanation: "A strong thesis statement clearly presents the main argument or purpose and is typically placed early in the essay."
+            },
+            {
+                question: "Revising a first draft differs from editing because:",
+                options: [
+                    "They are the same process",
+                    "Revising addresses content and organization; editing focuses on grammar and mechanics",
+                    "Editing comes before revising",
+                    "Revising is only for professional writers"
+                ],
+                correct: 1,
+                explanation: "Revising improves overall content and structure; editing corrects grammar, spelling, and punctuation errors."
+            },
+            {
+                question: "A paragraph should contain:",
+                options: [
+                    "A topic sentence only",
+                    "Only supporting details",
+                    "A topic sentence, supporting sentences, and a concluding sentence",
+                    "Multiple unrelated ideas"
+                ],
+                correct: 2,
+                explanation: "A well-structured paragraph has a topic sentence (main idea), supporting sentences (evidence/examples), and often a concluding sentence."
+            }
+        ],
+        "Listening and Spoken English": [
+            {
+                question: "Effective listening requires:",
+                options: [
+                    "Simply hearing sounds",
+                    "Waiting for your turn to speak",
+                    "Active attention, comprehension, and response to understand both literal and implied meaning",
+                    "Taking notes on everything"
+                ],
+                correct: 2,
+                explanation: "Active listening involves focusing, understanding content, recognizing implied meaning, and responding appropriately."
+            },
+            {
+                question: "Stress in spoken English refers to:",
+                options: [
+                    "Anxiety about speaking",
+                    "Emphasis placed on certain syllables or words",
+                    "Speaking too quickly",
+                    "Using difficult vocabulary"
+                ],
+                correct: 1,
+                explanation: "Stress involves emphasis on syllables or words that affects meaning—'REcord' (noun) vs. 're-CORD' (verb)."
+            },
+            {
+                question: "Intonation in spoken English involves:",
+                options: [
+                    "Grammar rules",
+                    "Correct pronunciation of individual sounds",
+                    "Pitch patterns that convey emotion and intent in sentences",
+                    "Speaking speed"
+                ],
+                correct: 2,
+                explanation: "Intonation is the melody of speech—how pitch rises and falls to convey questions, emotion, and meaning."
+            }
+        ],
+        "Punctuation and Mechanics": [
+            {
+                question: "An apostrophe is used for:",
+                options: [
+                    "Separating items in a list",
+                    "Showing possession and forming contractions",
+                    "Ending a sentence",
+                    "Introducing a quote"
+                ],
+                correct: 1,
+                explanation: "Apostrophes show possession ('the student's book') and form contractions ('don't' = 'do not')."
+            },
+            {
+                question: "Which sentence uses commas correctly?",
+                options: [
+                    "The dog, cat and bird are playing.",
+                    "She studied hard, went to bed early, and woke up refreshed.",
+                    "I like ice cream, pizza and, cookies.",
+                    "He was tired, but, he continued working."
+                ],
+                correct: 1,
+                explanation: "Option B correctly uses Oxford commas and parallel structure in a series with proper punctuation."
+            },
+            {
+                question: "Capitalization rules include capitalizing:",
+                options: [
+                    "All nouns in a sentence",
+                    "Proper nouns and the first word of sentences",
+                    "Only verbs",
+                    "Random words for emphasis"
+                ],
+                correct: 1,
+                explanation: "Proper nouns (names, places) and the first word of sentences are capitalized according to standard English conventions."
+            }
+        ],
+        "Academic English Skills": [
+            {
+                question: "Paraphrasing means:",
+                options: [
+                    "Copying text word-for-word",
+                    "Writing someone else's ideas in your own words while citing the source",
+                    "Changing one word in a sentence",
+                    "Avoiding reading the original source"
+                ],
+                correct: 1,
+                explanation: "Paraphrasing restates ideas in your own words with different sentence structure but maintains the same meaning and requires citation."
+            },
+            {
+                question: "Academic integrity requires:",
+                options: [
+                    "Never using other people's ideas",
+                    "Properly citing sources and giving credit for borrowed ideas",
+                    "Writing everything without any research",
+                    "Using other people's work without acknowledgment"
+                ],
+                correct: 1,
+                explanation: "Academic integrity involves honesty in scholarship—properly crediting sources through citations and quotations."
+            },
+            {
+                question: "When synthesizing information from multiple sources, you should:",
+                options: [
+                    "Combine all sources without distinguishing them",
+                    "Use only the first source you find",
+                    "Integrate, compare, and evaluate information from different sources into your own analysis",
+                    "Copy the source that agrees with your opinion"
+                ],
+                correct: 2,
+                explanation: "Synthesis involves combining ideas from multiple sources, showing relationships between them, and developing original analysis."
+            },
+            {
+                question: "In academic writing, formal tone is important because:",
+                options: [
+                    "It makes writing boring",
+                    "It demonstrates professionalism, clarity, and respect for the audience",
+                    "It prevents understanding",
+                    "It is never necessary"
+                ],
+                correct: 1,
+                explanation: "Formal tone in academic writing establishes credibility, maintains objectivity, and demonstrates proper scholarly communication."
+            }
+        ]
     }
 };
 
