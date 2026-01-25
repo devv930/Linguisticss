@@ -4760,6 +4760,332 @@ const questionBank = {
                 explanation: "Formal tone in academic writing establishes credibility, maintains objectivity, and demonstrates proper scholarly communication."
             }
         ]
+    },
+    "GST 203": {
+        "Definition and Scope of Government": [
+            {
+                question: "Government is best defined as:",
+                options: [
+                    "The military of a country",
+                    "The system of organization and authority through which a political community exercises power and makes decisions",
+                    "Only the legislative branch",
+                    "The wealthy elite of a society"
+                ],
+                correct: 1,
+                explanation: "Government is the formal system of authority and institutions through which collective decisions are made and power is exercised over a political community."
+            },
+            {
+                question: "The scope of government encompasses:",
+                options: [
+                    "Only law enforcement",
+                    "Legislative, executive, and judicial functions",
+                    "Only taxation",
+                    "International relations exclusively"
+                ],
+                correct: 1,
+                explanation: "Government's scope includes law-making (legislative), enforcement (executive), dispute resolution (judicial), and service delivery."
+            },
+            {
+                question: "Which is a primary purpose of government?",
+                options: [
+                    "Maximizing individual wealth",
+                    "Maintaining order, security, and delivering public services",
+                    "Controlling all economic activity",
+                    "Eliminating social differences"
+                ],
+                correct: 1,
+                explanation: "Core government functions include maintaining order and security, delivering public services, protecting rights, and pursuing collective goals."
+            }
+        ],
+        "Types of Government Systems": [
+            {
+                question: "Which type of government concentrates power in a single individual?",
+                options: [
+                    "Democracy",
+                    "Autocracy",
+                    "Oligarchy",
+                    "Monarchy (constitutional)"
+                ],
+                correct: 1,
+                explanation: "Autocracy concentrates power in one person—such as a dictator or absolute monarch—without significant power-sharing."
+            },
+            {
+                question: "In a democracy, political power is:",
+                options: [
+                    "Held by the military",
+                    "Concentrated in wealthy families",
+                    "Distributed among the people through elections and representation",
+                    "Controlled by religious institutions"
+                ],
+                correct: 2,
+                explanation: "Democracy distributes power among the people through elections, representation, and democratic institutions."
+            },
+            {
+                question: "A federal system differs from a unitary system in that:",
+                options: [
+                    "Federal systems have no central authority",
+                    "Federal systems distribute power among national and regional levels",
+                    "Unitary systems are more democratic",
+                    "They are identical in structure"
+                ],
+                correct: 1,
+                explanation: "Federal systems divide power between national and subnational governments; unitary systems concentrate power at the national level."
+            },
+            {
+                question: "In a parliamentary system, the executive is:",
+                options: [
+                    "Completely separate from the legislature",
+                    "Drawn from and accountable to the legislature",
+                    "Always a military leader",
+                    "Unaffected by legislative actions"
+                ],
+                correct: 1,
+                explanation: "Parliamentary systems integrate executive and legislative functions—the executive is drawn from and depends on legislative support."
+            }
+        ],
+        "Functions and Roles of Government": [
+            {
+                question: "Which function is unique to government?",
+                options: [
+                    "Providing entertainment",
+                    "Creating binding collective decisions with enforcement power",
+                    "Maximizing profits",
+                    "Managing private businesses"
+                ],
+                correct: 1,
+                explanation: "Government's unique function is creating and enforcing binding collective decisions that apply to the entire political community."
+            },
+            {
+                question: "Public service provision by government includes:",
+                options: [
+                    "Only police services",
+                    "Only education",
+                    "Education, health, infrastructure, and welfare",
+                    "No services—only private provision"
+                ],
+                correct: 2,
+                explanation: "Government provides essential public services including education, healthcare, infrastructure, welfare, and many others for social well-being."
+            },
+            {
+                question: "Economic regulation by government serves to:",
+                options: [
+                    "Eliminate all markets",
+                    "Give government complete ownership of business",
+                    "Manage markets, trade, labor standards, and resource allocation",
+                    "Prevent any economic activity"
+                ],
+                correct: 2,
+                explanation: "Economic regulation involves managing market functioning, protecting workers and consumers, and ensuring fair competition."
+            }
+        ],
+        "Society: Concepts and Structure": [
+            {
+                question: "Society is distinguished from the state because:",
+                options: [
+                    "Society and state are the same thing",
+                    "State is political organization while society encompasses all social relationships and institutions",
+                    "Society has no government",
+                    "Only the state has culture"
+                ],
+                correct: 1,
+                explanation: "The state is political/governmental; society is the broader social realm including families, groups, associations, and communities."
+            },
+            {
+                question: "Social stratification refers to:",
+                options: [
+                    "The number of social groups",
+                    "Unequal distribution of wealth, status, and power in society",
+                    "The study of language",
+                    "Family organization only"
+                ],
+                correct: 1,
+                explanation: "Social stratification is the hierarchical arrangement of social positions based on differential distribution of resources and rewards."
+            },
+            {
+                question: "Which is an example of a social institution?",
+                options: [
+                    "A specific school building",
+                    "One person's family",
+                    "The family as a system for reproduction and socialization",
+                    "A particular church"
+                ],
+                correct: 2,
+                explanation: "Social institutions are established systems of social practice organized around particular functions—like family, religion, or education."
+            }
+        ],
+        "Social Institutions and Organization": [
+            {
+                question: "Social institutions serve which function?",
+                options: [
+                    "Entertainment only",
+                    "Meeting fundamental social needs and maintaining social order",
+                    "Eliminating inequality",
+                    "Creating new societies"
+                ],
+                correct: 1,
+                explanation: "Institutions serve manifest functions (stated purposes) and latent functions (unintended consequences) in meeting social needs."
+            },
+            {
+                question: "The family as a social institution primarily serves to:",
+                options: [
+                    "Generate wealth",
+                    "Reproduction, socialization, and providing affection and support",
+                    "Enforce government laws",
+                    "Replace education"
+                ],
+                correct: 1,
+                explanation: "Family is the primary unit for biological reproduction, cultural transmission/socialization, and emotional support."
+            },
+            {
+                question: "How are social institutions interconnected?",
+                options: [
+                    "They operate completely independently",
+                    "Changes in one institution affect others",
+                    "Only the political institution matters",
+                    "They never interact"
+                ],
+                correct: 1,
+                explanation: "Social institutions are interdependent—changes in economic institutions affect family structure, education systems, etc."
+            }
+        ],
+        "Introduction to Economy and Economic Systems": [
+            {
+                question: "An economy addresses which fundamental question:",
+                options: [
+                    "What is the meaning of life?",
+                    "What to produce, how to produce, and for whom to produce",
+                    "How to eliminate all differences?",
+                    "Whether government exists"
+                ],
+                correct: 1,
+                explanation: "Economics addresses production and distribution by answering what, how, and for whom production occurs."
+            },
+            {
+                question: "Capitalism is characterized by:",
+                options: [
+                    "Government ownership of all property",
+                    "Private ownership, market allocation, and profit motive",
+                    "Equal distribution of all goods",
+                    "No economic activity"
+                ],
+                correct: 1,
+                explanation: "Capitalism features private ownership of productive resources, market-driven allocation, and profit seeking as primary motivation."
+            },
+            {
+                question: "A mixed economy combines:",
+                options: [
+                    "Only capitalist elements",
+                    "Only socialist elements",
+                    "Market mechanisms and state intervention",
+                    "No elements at all"
+                ],
+                correct: 2,
+                explanation: "Mixed economies blend market allocation with government regulation and intervention—combining capitalist and socialist elements."
+            },
+            {
+                question: "Which is an example of socialism's approach to ownership?",
+                options: [
+                    "Complete private ownership",
+                    "Collective or state ownership of productive resources",
+                    "Individual profit maximization",
+                    "No organization at all"
+                ],
+                correct: 1,
+                explanation: "Socialist systems feature collective or state ownership of productive resources, with distribution based on need rather than market forces."
+            }
+        ],
+        "Economic Activities and Development": [
+            {
+                question: "The primary sector of economy includes:",
+                options: [
+                    "Manufacturing",
+                    "Extracting natural resources (agriculture, mining, fishing)",
+                    "Services like healthcare",
+                    "Information technology"
+                ],
+                correct: 1,
+                explanation: "The primary sector involves extracting raw materials and natural resources from the environment."
+            },
+            {
+                question: "Development is measured through indicators such as:",
+                options: [
+                    "Only military strength",
+                    "Per capita income, literacy rates, life expectancy, and access to services",
+                    "Population size only",
+                    "Geographic location"
+                ],
+                correct: 1,
+                explanation: "Development indicators include economic (income), social (literacy, health), and infrastructure measures."
+            },
+            {
+                question: "Which factor is crucial for economic development?",
+                options: [
+                    "Geographic isolation",
+                    "Capital accumulation, technological innovation, human capital, and institutions",
+                    "Preventing all trade",
+                    "Eliminating education"
+                ],
+                correct: 1,
+                explanation: "Development requires capital investment, innovation, skilled workers, and effective institutions—not isolation."
+            },
+            {
+                question: "Developed countries are typically characterized by:",
+                options: [
+                    "Low income and limited industry",
+                    "High income, diversified economy, and advanced technology",
+                    "No government services",
+                    "No international trade"
+                ],
+                correct: 1,
+                explanation: "Developed countries have high per capita income, diversified economies, advanced technology, and extensive services."
+            }
+        ],
+        "Interconnections: Government, Society, and Economy": [
+            {
+                question: "How do government, society, and economy interact?",
+                options: [
+                    "They operate completely independently",
+                    "They are deeply interconnected, shaping and constraining each other",
+                    "Only government matters",
+                    "They are identical systems"
+                ],
+                correct: 1,
+                explanation: "These systems are interdependent—government provides framework for economy; economy generates government resources; society provides both with legitimacy."
+            },
+            {
+                question: "When economic collapse occurs, what typically happens?",
+                options: [
+                    "Government remains unaffected",
+                    "Society is unharmed",
+                    "Government loses resources and society experiences instability",
+                    "Everything remains normal"
+                ],
+                correct: 2,
+                explanation: "Economic crisis affects government revenue and legitimacy, disrupts social services, creates inequality, and can destabilize political systems."
+            },
+            {
+                question: "Which is an example of policy affecting all three systems?",
+                options: [
+                    "A holiday announcement",
+                    "A school building construction",
+                    "Raising taxes or wages—affecting government revenue, economic activity, and social welfare",
+                    "Weather changes"
+                ],
+                correct: 2,
+                explanation: "Economic policy decisions have spillover effects—higher wages affect government budgets, business behavior, and household welfare simultaneously."
+            },
+            {
+                question: "The COVID-19 pandemic exemplified system interconnection because:",
+                options: [
+                    "Only health was affected",
+                    "Only economy was disrupted",
+                    "Health crisis affected economy, which affected government, requiring coordinated response",
+                    "Systems remained separate"
+                ],
+                correct: 2,
+                explanation: "The pandemic showed how health (social issue) impacted economy (closures, unemployment), which affected government (revenue, response capacity)."
+            }
+        ]
     }
 };
 
