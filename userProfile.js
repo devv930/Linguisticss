@@ -412,6 +412,7 @@ window.userProfile = {
     recordCourseProgress,
     recordTestScore,
     recordCertificate,
+    addCertificate: recordCertificate,  // Alias for convenience
     getCertificates,
     updateStudyStreak,
     getStreakInfo,
