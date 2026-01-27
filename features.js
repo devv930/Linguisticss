@@ -3,6 +3,11 @@
 // ========== DARK MODE ==========
 function initDarkMode() {
     const darkModeToggle = document.getElementById('darkModeToggle');
+    if (!darkModeToggle) {
+        // Dark mode toggle not found on this page, skip initialization
+        return;
+    }
+    
     const isDarkMode = localStorage.getItem('darkMode') === 'true';
     
     // Apply saved preference
