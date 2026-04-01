@@ -49,10 +49,12 @@
     font-size: 2.5rem;
     min-width: 60px;
     text-align: center;
+    color: #ffffff;
 }
 
 .stat-content {
     flex: 1;
+    color: #ffffff;
 }
 
 .stat-label {
@@ -61,18 +63,30 @@
     opacity: 0.9;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    color: #ffffff;
 }
 
 .stat-value {
     margin: 5px 0 0 0;
     font-size: 2rem;
     font-weight: 700;
+    color: #ffffff;
 }
 
 .stat-subtext {
     margin: 0;
     font-size: 0.75rem;
     opacity: 0.8;
+    color: #ffffff !important;
+}
+
+/* Force visibility for stat text across themes */
+.stat-card .stat-icon,
+.stat-card .stat-content,
+.stat-card .stat-label,
+.stat-card .stat-value,
+.stat-card .stat-subtext {
+    color: #850a0a !important;
 }
 
 /* Dashboard Section */
